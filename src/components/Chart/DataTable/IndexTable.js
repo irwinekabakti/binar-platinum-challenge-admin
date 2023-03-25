@@ -11,7 +11,7 @@ const IndexTable = () => {
           <div className={`me-3 ${classes.barBlue}`}></div>
           <h6 className="fw-bold mb-3">List Order</h6>
         </div>
-        <CarsTable rowsPerPage={5} />
+        <CarsTable rowsPerPage={10} />
       </div>
     </main>
   );

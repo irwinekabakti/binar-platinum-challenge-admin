@@ -99,10 +99,8 @@ const Cars = () => {
       dispatch(deletedCarDashboard(id))
         .unwrap()
         .then(() => {
-          // navigate("/cars?formSuccess=true");
-          // navigate("/cars");
+          navigate("/cars");
           // navigate("/");
-          // checkFormSuccess();
         });
     } catch (error) {
       console.log(error);

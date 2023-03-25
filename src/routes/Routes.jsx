@@ -54,7 +54,6 @@ const Routes = () => {
     */
 
     { path: "/", element: <LoginAdmin /> },
-
     {
       path: "/dashboard",
       element: isAdminAuthenticated ? <Dashboard /> : <Navigate to="/" />,
