@@ -1,0 +1,63 @@
+.bodyModalSuccess {
+  background: #73ca5c;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.bodyModalDelete {
+  background: #fff;
+  border-color: #0d28a6;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.wrapperImageCars {
+  margin: 10px auto 0;
+  width: 90%;
+}
+
+.btnEdit {
+  background: #5cb85f;
+  border-radius: 2px;
+}
+
+.btnDelete {
+  border-radius: 2px;
+}
+
+.btnEdit:hover {
+  background: #409b43;
+}
+
+.containerCarsPage {
+  min-height: 100vh;
+  background: #f4f5f7;
+}
+
+.colCarsPage {
+  width: 20.14%;
+  min-width: 218px;
+  max-width: 290px;
+}
+
+.btnAddCar {
+  background: #0d28a6;
+  border-radius: 2px;
+}
+
+.btnAddCar:hover {
+  background: #0b2186;
+}
+
+.btnFilterCars {
+  background: #fff;
+  color: #aeb7e1;
+  border-color: #aeb7e1;
+  border-radius: 2px;
+}
+
+.btnFilterCars:hover {
+  background: #cfd4ed;
+  color: #0d28a6;
+  border-color: #0d28a6;
+}

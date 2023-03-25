@@ -1,0 +1,49 @@
+.formBox {
+  font-family: Arial;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.57143;
+  border-radius: 2px;
+}
+
+.formButtonSave {
+  padding: 8px 12px;
+  height: 36px;
+  font-family: Arial;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.57143;
+  background-color: #0d28a6;
+  border-radius: 2px;
+  color: #0d28a6;
+}
+
+.fieldFormSet {
+  max-width: 494px;
+  font-family: Arial;
+  font-weight: 400;
+  font-size: 0.75rem;
+  line-height: 1.5;
+}
+
+.formButtonCancel {
+  padding: 8px 12px;
+  height: 36px;
+  font-family: Arial;
+  font-weight: 700;
+  font-size: 0.875rem;
+  line-height: 1.57143;
+  border-radius: 2px;
+  background-color: #fff;
+  color: #0d28a6;
+}
+
+.formButtonSave:hover {
+  background-color: #0b2186;
+  color: #0d28a6;
+}
+
+.formButtonCancel:hover {
+  background-color: #fff;
+  color: #0b2186;
+}
