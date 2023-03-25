@@ -15,11 +15,11 @@ const CarForm = ({ formFunction }) => {
   const [price, setPrice] = useState(null);
   const [image, setImage] = useState(null);
   const [category, setCategory] = useState("");
-  const selector = useSelector((state) => state.dashboardStore);
-  const selectedCarAdmin = selector.dataCars;
+  // const selector = useSelector((state) => state.dashboardStore);
+  // const selectedCarAdmin = selector.dataCars;
   // const selectUpdate = selectedCarAdmin.map((item) => item.createdAt);
   // console.log(selectUpdate);
-  console.log(selectedCarAdmin);
+  // console.log(selectedCarAdmin);
   // console.log(selectedCarAdmin.createdAt);
   // console.log(selectedCarAdmin.updatedAt);
 
