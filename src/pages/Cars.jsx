@@ -99,7 +99,8 @@ const Cars = () => {
       dispatch(deletedCarDashboard(id))
         .unwrap()
         .then(() => {
-          navigate("/cars");
+          // navigate("/cars?formSuccess=true");
+          // navigate("/cars");
           // navigate("/");
           // checkFormSuccess();
         });
@@ -179,17 +180,17 @@ const Cars = () => {
   }, []);
 
   const filterCars = () => {
-    let carsToRender = displayedCars;
+    let renderCars = displayedCars;
 
     if (category) {
-      carsToRender = carsToRender.filter((car) => {
+      renderCars = renderCars.filter((car) => {
         if (car.category === category) return car;
       });
     }
 
     return (
       <Row className="g-4 mb-5 mt-0">
-        {carsToRender.map((car) => (
+        {renderCars.map((car) => (
           <Col
             xs={12}
             md={6}
@@ -231,9 +232,7 @@ const Cars = () => {
                 <p>
                   <small>
                     <FontAwesomeIcon icon={faClock} /> Updated at{" "}
-                    {moment(displayedCars.updateAt).format(
-                      "DD MMMM YYYY, h:mm A"
-                    )}
+                    {moment(car.updatedAt).format("DD MMMM YYYY h:mm A")}
                   </small>
                 </p>
                 <div className="d-flex justify-content-around">

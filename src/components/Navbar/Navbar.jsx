@@ -147,8 +147,10 @@ const NavbarAdmin = ({ currentPage }) => {
           </Col>
           <Col className="h-100 d-flex justify-content-between">
             <div
+              data-testid="container-burger-button-custom"
               className={`h-100 w-100 d-flex justify-content-center align-items-center ${classes.containerBurgerButton}`}>
               <Button
+                data-testid="burger-button-custom"
                 className={`bg-white p-1 d-flex flex-column border-0 ${classes.btnBurgerButton}`}>
                 <span className={`bg-dark ${classes.burgerButton}`} />
                 <span className={`bg-dark ${classes.burgerButton}`} />

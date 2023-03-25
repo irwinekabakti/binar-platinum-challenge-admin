@@ -87,9 +87,7 @@ const dashboardSlice = createSlice({
         };
       });
     });
-    builder.addCase(deletedCarDashboard.fulfilled, (state, action) => {
-      // state.dataCars = action.payload;
-    });
+    builder.addCase(deletedCarDashboard.fulfilled);
   },
 });
 
