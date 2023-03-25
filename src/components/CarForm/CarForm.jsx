@@ -6,6 +6,7 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import iconUpload from "../../assets/fi_upload.svg";
 import classes from "./CarForm.module.css";
+import { useSelector } from "react-redux";
 
 const CarForm = ({ formFunction }) => {
   const navigate = useNavigate();
@@ -14,6 +15,13 @@ const CarForm = ({ formFunction }) => {
   const [price, setPrice] = useState(null);
   const [image, setImage] = useState(null);
   const [category, setCategory] = useState("");
+  const selector = useSelector((state) => state.dashboardStore);
+  const selectedCarAdmin = selector.dataCars;
+  // const selectUpdate = selectedCarAdmin.map((item) => item.createdAt);
+  // console.log(selectUpdate);
+  console.log(selectedCarAdmin);
+  // console.log(selectedCarAdmin.createdAt);
+  // console.log(selectedCarAdmin.updatedAt);
 
   const config = {
     headers: {
@@ -179,18 +187,22 @@ const CarForm = ({ formFunction }) => {
               </Form.Select>
             </Col>
           </Form.Group>
-          <Row className="mb-3">
-            <Col sm="4" className="mb-0">
-              Created at
-            </Col>
-            <Col sm="8">-</Col>
-          </Row>
-          <Row>
-            <Col sm="4" className="mb-0">
-              Updated at
-            </Col>
-            <Col sm="8">-</Col>
-          </Row>
+          <div>
+            <Row className="mb-3">
+              <Col sm="4" className="mb-0">
+                Created at
+              </Col>
+              <Col sm="8">-</Col>
+              {/* <Col sm="8">{selectUpdate}</Col> */}
+            </Row>
+            <Row>
+              <Col sm="4" className="mb-0">
+                Updated at
+              </Col>
+              <Col sm="8">-</Col>
+              {/* <Col sm="8">{selectUpdate}</Col> */}
+            </Row>
+          </div>
         </fieldset>
       </div>
       <div className="d-flex" style={{ marginTop: "40px" }}>

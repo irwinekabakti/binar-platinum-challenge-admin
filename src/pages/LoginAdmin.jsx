@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 import Loading from "../components/Loading/Loading";
 
-const LogInPage = () => {
+const LoginAdmin = () => {
   const [emailAdmin, setEmailAdmin] = useState();
   const [passwordAdmin, setPasswordAdmin] = useState();
   const [isError, setIsError] = useState(false);
@@ -120,4 +120,4 @@ const LogInPage = () => {
   );
 };
 
-export default LogInPage;
+export default LoginAdmin;

@@ -1,0 +1,93 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UI LoginAdmin test UI LoginAdmin should match snapshot 1`] = `
+<div
+  className="container-fluid d-flex bg-light containerLoginAdmin"
+>
+  <div
+    className="col-lg-8"
+  >
+    <img
+      alt="background-admin"
+      className="imgLoginAdmin h-100"
+      src="background-admin.svg"
+    />
+  </div>
+  <div
+    className="col-lg-4 formMobile formMobileNest"
+  >
+    <div
+      className="adminForm"
+    >
+      <img
+        alt="Sign-In-Admin-BCR"
+        src="Logo-login.svg"
+      />
+      <h1
+        className="fw-bold mt-5 headingFormAdmin"
+      >
+        Welcome, Admin BCR
+      </h1>
+      <form
+        className=""
+        onSubmit={[Function]}
+      >
+        <fieldset>
+          <div>
+            <label
+              className="labelEmail form-label"
+              htmlFor="email"
+            >
+              Email
+            </label>
+            <input
+              className="inputEmail form-control"
+              id="email"
+              onChange={[Function]}
+              placeholder="Contoh: kingemyu@gmail.co.uk"
+              required={true}
+              type="email"
+            />
+            <div
+              className="invalid-feedback"
+            >
+              Masukkan email yang benar
+            </div>
+          </div>
+          <div
+            className="mt-3"
+          >
+            <label
+              className="labelPassword form-label"
+              htmlFor="password"
+            >
+              Password
+            </label>
+            <input
+              className="inputPassword form-control"
+              id="password"
+              minLength="6"
+              onChange={[Function]}
+              placeholder="6+ character"
+              required={true}
+              type="password"
+            />
+            <div
+              className="invalid-feedback"
+            >
+              Masukan password minimal 6 karakter
+            </div>
+          </div>
+          <button
+            className="w-100 fw-bold btnSubmitAdmin btn btn-primary"
+            disabled={false}
+            type="submit"
+          >
+            Sign In
+          </button>
+        </fieldset>
+      </form>
+    </div>
+  </div>
+</div>
+`;
