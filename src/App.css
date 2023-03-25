@@ -1,38 +1,92 @@
-.App {
-  text-align: center;
+.menu-button:disabled {
+  background-color: pink;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.admin-menu:after {
+  display: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navigation-tab:hover {
+  background: rgba(255, 255, 255, 0.18);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.navigation-tab.selected {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.navigation-panel {
+  display: none;
+  opacity: 0;
+  -webkit-transform: translateX(-100%);
+  -moz-transform: translateX(-100%);
+  -o-transform: translateX(-100%);
+  transform: translateX(-100%);
+  -webkit-transition: 300ms ease-in-out;
+  -moz-transition: 300ms ease-in-out;
+  -o-transition: 300ms ease-in-out;
+  transition: 300ms ease-in-out;
+}
+
+.navigation-panel.display-block {
+  display: block;
+}
+
+.navigation-panel.open {
+  opacity: 1;
+  -webkit-transform: translateX(0);
+  -moz-transform: translateX(0);
+  -o-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.navigation-menu {
+  opacity: 0;
+  -webkit-transform: translateY(-78%);
+  -moz-transform: translateY(-78%);
+  -o-transform: translateY(-78%);
+  transform: translateY(-78%);
+  -webkit-transition: 350ms ease-in-out;
+  -moz-transition: 350ms ease-in-out;
+  -o-transition: 350ms ease-in-out;
+  transition: 350ms ease-in-out;
+}
+
+.navigation-menu.display-flex {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.navigation-menu.open {
+  opacity: 1;
+  -webkit-transform: translateY(0%);
+  -moz-transform: translateY(0);
+  -o-transform: translateY(0);
+  transform: translateY(0);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.navigation-menu.index {
+  z-index: 100;
+}
+
+@media screen and (min-width: 768px) {
+  .navigation-menu {
+    display: flex;
+    opacity: 1;
+    -webkit-transform: translateY(0%);
+    -moz-transform: translateY(0);
+    -o-transform: translateY(0);
+    transform: translateY(0);
   }
-  to {
-    transform: rotate(360deg);
+
+  .navigation-panel {
+    display: block;
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
+  }
+
+  .menu-button {
+    pointer-events: none;
   }
 }

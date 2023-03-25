@@ -11,6 +11,7 @@ const Routes = () => {
   const { isAdminAuthenticated } = useSelector((state) => state.adminStore);
 
   return [
+    /*
     { path: "/loginAdmin", element: <LoginAdmin /> },
 
     {
@@ -23,7 +24,7 @@ const Routes = () => {
     },
 
     {
-      path: "dashboard",
+      path: "/dashboard",
       element: isAdminAuthenticated ? (
         <Dashboard />
       ) : (
@@ -40,6 +41,34 @@ const Routes = () => {
         <CarFormPage currentPage="edit" />
       ) : (
         <Navigate to="/loginAdmin" />
+      ),
+    },
+    {
+      path: "/cars/add-new",
+      element: isAdminAuthenticated ? (
+        <CarFormPage currentPage="add" />
+      ) : (
+        <Navigate to="/loginAdmin" />
+      ),
+    },
+    */
+
+    { path: "/", element: <LoginAdmin /> },
+
+    {
+      path: "/dashboard",
+      element: isAdminAuthenticated ? <Dashboard /> : <Navigate to="/" />,
+    },
+    {
+      path: "/cars",
+      element: isAdminAuthenticated ? <Cars /> : <Navigate to="/" />,
+    },
+    {
+      path: "/cars/edit/:id",
+      element: isAdminAuthenticated ? (
+        <CarFormPage currentPage="edit" />
+      ) : (
+        <Navigate to="/" />
       ),
     },
     {

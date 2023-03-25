@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -21,39 +21,40 @@ import { logout } from "../../store/action/admin-slice";
 const NavbarAdmin = ({ currentPage }) => {
   const navbarRef = useRef();
   const [isSidebarActive, setIsSidebarActive] = useState(false);
-  const [navPanelClass, setNavPanelClass] = useState("");
-  const [navMenuClass, setNavMenuClass] = useState("");
+  const [navPanelCustom, setNavPanelCustom] = useState("");
+  const [navMenuCustom, setNavMenuCustom] = useState("");
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleLogoutAdmin = () => {
     dispatch(logout());
-    navigate("/loginAdmin");
+    // navigate("/loginAdmin");
+    navigate("/");
   };
 
   const handleSidebar = () => {
     if (!isSidebarActive) {
-      setNavMenuClass("display-flex");
+      setNavMenuCustom("display-flex");
       setTimeout(() => {
-        setNavMenuClass("display-flex open");
-        setNavPanelClass("display-block");
+        setNavMenuCustom("display-flex open");
+        setNavPanelCustom("display-block");
       }, 10);
       setTimeout(() => {
-        setNavMenuClass("display-flex open index");
+        setNavMenuCustom("display-flex open index");
       }, 360);
       setTimeout(() => {
-        setNavPanelClass("display-block open");
+        setNavPanelCustom("display-block open");
       }, 150);
     } else {
-      setNavPanelClass("display-block");
+      setNavPanelCustom("display-block");
       setTimeout(() => {
-        setNavPanelClass("");
+        setNavPanelCustom("");
       }, 300);
       setTimeout(() => {
-        setNavMenuClass("display-flex");
+        setNavMenuCustom("display-flex");
       }, 140);
       setTimeout(() => {
-        setNavMenuClass("");
+        setNavMenuCustom("");
       }, 490);
     }
     setIsSidebarActive(!isSidebarActive);
@@ -83,7 +84,7 @@ const NavbarAdmin = ({ currentPage }) => {
   return (
     <>
       <div
-        className={`bg-white navigation-panel position-absolute h-100 ${classes.navPanelClass} ${navPanelClass}`}>
+        className={`bg-white navigation-panel position-absolute h-100 ${navPanelCustom} ${classes.navPanelClass}`}>
         {currentPage === "dashboard" && (
           <div className="dashboard-menu w-100 flex-column">
             <p className={`w-100 ps-4 pe-3 ${classes.titleDashboard}`}>
@@ -106,7 +107,7 @@ const NavbarAdmin = ({ currentPage }) => {
         )}
       </div>
       <Nav
-        className={`navigation-menu position-absolute flex-column ${classes.navMenuClass} ${navMenuClass}`}>
+        className={`navigation-menu position-absolute flex-column ${navMenuCustom} ${classes.navMenuClass} `}>
         <Nav.Link
           className={`${
             classes.navigationTab
