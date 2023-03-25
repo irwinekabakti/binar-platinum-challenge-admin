@@ -4,8 +4,8 @@ import { useSelector } from "react-redux";
 import { Navigate } from "react-router";
 import LoginAdmin from "../pages/LoginAdmin";
 import Dashboard from "../pages/Dashboard";
-// import Cars from "../pages/Cars";
-// import CarFormPage from "../pages/CarFormPage";
+import Cars from "../pages/Cars";
+import CarFormPage from "../pages/CarFormPage";
 
 const Routes = () => {
   const { isAdminAuthenticated } = useSelector((state) => state.adminStore);
@@ -30,7 +30,6 @@ const Routes = () => {
         <Navigate to="/loginAdmin" />
       ),
     },
-    /*
     {
       path: "/cars",
       element: isAdminAuthenticated ? <Cars /> : <Navigate to="/loginAdmin" />,
@@ -51,7 +50,6 @@ const Routes = () => {
         <Navigate to="/loginAdmin" />
       ),
     },
-    */
   ];
 };
 
