@@ -100,7 +100,6 @@ const Cars = () => {
         .unwrap()
         .then(() => {
           navigate("/cars");
-          // navigate("/");
         });
     } catch (error) {
       console.log(error);
@@ -174,7 +173,7 @@ const Cars = () => {
 
   useEffect(() => {
     getCars();
-    filterCars();
+    // filterCars();
   }, []);
 
   const filterCars = () => {
