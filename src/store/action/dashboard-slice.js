@@ -13,6 +13,11 @@ const tableDashboard = createAsyncThunk("dataTable/dashboard", async () => {
       headers: {
         access_token: localStorage.getItem("token_Admin"),
       },
+      params: {
+        // created_at: "",
+        page: 1,
+        pageSize: 50,
+      },
     };
     const dashboardAdmin = await axios.get(
       `${BASE_API}/admin/v2/order`,
@@ -31,11 +36,12 @@ const carsDashboard = createAsyncThunk("get/Cars", async () => {
       headers: {
         access_token: localStorage.getItem("token_Admin"),
       },
+      params: {
+        size: 1,
+        pageSize: 10,
+      },
     };
-    const getResponse = await axios.get(
-      `${BASE_API}/customer/v2/car?pageSize=10`,
-      config
-    );
+    const getResponse = await axios.get(`${BASE_API}/customer/v2/car`, config);
     return getResponse.data.cars;
   } catch (error) {
     console.log(error);
@@ -95,6 +101,5 @@ export const { getTableDashboard, getUpdateCar, getCarsDashboard } =
   dashboardSlice.actions;
 
 export { tableDashboard, carsDashboard, deletedCarDashboard };
-// export { carListDashboard }
 
 export default dashboardSlice;
