@@ -2,8 +2,9 @@ import React from "react";
 import NavbarAdmin from "../components/Navbar/Navbar";
 import GraphicCar from "../components/Chart/GraphicCar";
 import { Col, Container, Row } from "react-bootstrap";
-import IndexTable from "../components/Chart/DataTable/IndexTable";
 import classes from "./Dashboard.module.css";
+// New Table
+import TableListOrder from "../components/Chart/DataTable/IndexTableNum2";
 
 const Dashboard = () => {
   return (
@@ -20,9 +21,9 @@ const Dashboard = () => {
           <br />
         </div>
       </Container>
-      <br />
-      <br />
-      <IndexTable />
+      {/* <br />
+      <br /> */}
+      <TableListOrder />
     </div>
   );
 };

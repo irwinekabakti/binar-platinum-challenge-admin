@@ -99,7 +99,8 @@ const Cars = () => {
       dispatch(deletedCarDashboard(id))
         .unwrap()
         .then(() => {
-          navigate("/cars");
+          getCars();
+          // navigate("/cars");
         });
     } catch (error) {
       console.log(error);
@@ -122,7 +123,7 @@ const Cars = () => {
     deleteCar();
     setShowModal(false);
     setShowHeaderModal(true);
-    getCars();
+    // getCars();
   };
 
   const OpenModal = (props) => {

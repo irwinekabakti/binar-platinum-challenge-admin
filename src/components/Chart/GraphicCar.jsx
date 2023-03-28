@@ -7,53 +7,62 @@ import {
   LinearScale,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import axios from "axios";
 import classes from "./GraphicCar.module.css";
+import { useSelector, useDispatch } from "react-redux";
+import { chartDashboard } from "../../store/action/dashboard-slice";
 
 ChartJS.register(BarElement, CategoryScale, LinearScale);
-const months = [
-  { id: 1, name: "January" },
-  { id: 2, name: "February" },
-  { id: 3, name: "March" },
-  { id: 4, name: "April" },
-  { id: 5, name: "May" },
-  { id: 6, name: "June" },
-  { id: 7, name: "July" },
-  { id: 8, name: "August" },
-  { id: 9, name: "September" },
-  { id: 10, name: "October" },
-  { id: 11, name: "November" },
-  { id: 12, name: "December" },
-];
-const GrapichCar = () => {
+
+const GraphicCar = () => {
   const [labels, setLabels] = useState([]);
   const [amounts, setAmounts] = useState([]);
   const [startDateRent, setStartDateRent] = useState(`2022-01-01`);
   const [finishDateRent, setFinishDateRent] = useState(`2022-01-31`);
+  const dispatch = useDispatch();
+  const selector = useSelector((state) => state.dashboardStore);
+  const selectedChart = selector.chartOrder;
+
+  const months = [
+    { id: 1, name: "January" },
+    { id: 2, name: "February" },
+    { id: 3, name: "March" },
+    { id: 4, name: "April" },
+    { id: 5, name: "May" },
+    { id: 6, name: "June" },
+    { id: 7, name: "July" },
+    { id: 8, name: "August" },
+    { id: 9, name: "September" },
+    { id: 10, name: "October" },
+    { id: 11, name: "November" },
+    { id: 12, name: "December" },
+  ];
+
+  const fetchData = async () => {
+    try {
+      dispatch(chartDashboard({ from: startDateRent, until: finishDateRent }));
+    } catch (error) {
+      console.log(error);
+      alert(error);
+    }
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://bootcamp-rent-cars.herokuapp.com/admin/order/reports?from=${startDateRent}&until=${finishDateRent}`,
-          {
-            headers: {
-              access_token: localStorage.getItem("token_Admin"),
-            },
-          }
-        );
-        let labels = [];
-        let amounts = [];
-        response.data.map((report) => {
-          labels.push(report.day);
-          amounts.push(report.orderCount);
-        });
-        setLabels(labels);
-        setAmounts(amounts);
-      } catch (error) {
-        alert(error.message);
-      }
-    };
+    let labels = [];
+    let amounts = [];
+    selectedChart.map((report) => {
+      labels.push(report.day);
+      amounts.push(report.orderCount);
+    });
+    setLabels(labels);
+    setAmounts(amounts);
+  }, [selectedChart]);
+
+  useEffect(() => {
+    fetchData();
+    return () => {};
+  }, []);
+
+  useEffect(() => {
     fetchData();
   }, [startDateRent, finishDateRent]);
 
@@ -68,6 +77,7 @@ const GrapichCar = () => {
       },
     ],
   };
+
   const options = {
     responsive: true,
     maintainAspectRatio: false,
@@ -90,7 +100,7 @@ const GrapichCar = () => {
       x: {
         title: {
           display: true,
-          text: "Month",
+          text: "Date",
         },
       },
     },
@@ -145,4 +155,4 @@ const GrapichCar = () => {
   );
 };
 
-export default GrapichCar;
+export default GraphicCar;

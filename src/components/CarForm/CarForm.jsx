@@ -6,7 +6,11 @@ import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import iconUpload from "../../assets/fi_upload.svg";
 import classes from "./CarForm.module.css";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  uploadedCarDashboard,
+  editedCarDashboard,
+} from "../../store/action/dashboard-slice";
 
 const CarForm = ({ formFunction }) => {
   const navigate = useNavigate();
@@ -15,13 +19,7 @@ const CarForm = ({ formFunction }) => {
   const [price, setPrice] = useState(null);
   const [image, setImage] = useState(null);
   const [category, setCategory] = useState("");
-  // const selector = useSelector((state) => state.dashboardStore);
-  // const selectedCarAdmin = selector.dataCars;
-  // const selectUpdate = selectedCarAdmin.map((item) => item.createdAt);
-  // console.log(selectUpdate);
-  // console.log(selectedCarAdmin);
-  // console.log(selectedCarAdmin.createdAt);
-  // console.log(selectedCarAdmin.updatedAt);
+  const dispatch = useDispatch();
 
   const config = {
     headers: {
@@ -43,6 +41,14 @@ const CarForm = ({ formFunction }) => {
     }
   };
 
+  /*
+  const uploadEditForm = async () => {
+
+    dispatch(editedCarDashboard({ name, price, category, image }))
+  };
+  */
+
+  /*
   const uploadAddForm = async () => {
     try {
       const response = await axios.post(
@@ -57,6 +63,15 @@ const CarForm = ({ formFunction }) => {
     } catch (err) {
       console.log(err);
     }
+  };
+  */
+
+  const uploadAddForm = async () => {
+    dispatch(uploadedCarDashboard({ name, price, category, image }))
+      .unwrap()
+      .then(() => {
+        navigate("/cars?formSuccess=true");
+      });
   };
 
   const appendFormData = (key, value) => {
