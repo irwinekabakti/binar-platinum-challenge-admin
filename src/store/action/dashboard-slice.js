@@ -3,32 +3,57 @@ import axios from "axios";
 import BASE_API from "../../api/BASE_API";
 
 const initialState = {
+  chartOrder: [],
   dashboardData: [],
   dataCars: [],
 };
 
-const tableDashboard = createAsyncThunk("dataTable/dashboard", async () => {
+const chartDashboard = createAsyncThunk("chart/order", async (payload) => {
   try {
     const config = {
       headers: {
         access_token: localStorage.getItem("token_Admin"),
       },
       params: {
-        // created_at: "",
-        page: 1,
-        pageSize: 50,
+        from: payload.from,
+        until: payload.until,
       },
     };
-    const dashboardAdmin = await axios.get(
-      `${BASE_API}/admin/v2/order`,
-      config
-    );
-    return dashboardAdmin.data.orders;
+
+    const response = await axios.get(`${BASE_API}/admin/order/reports`, config);
+
+    return response.data;
   } catch (error) {
     console.log(error);
     throw error;
   }
 });
+
+const tableDashboard = createAsyncThunk(
+  "dataTable/dashboard",
+  async ({ sort, page, pageSize }) => {
+    try {
+      const config = {
+        headers: {
+          access_token: localStorage.getItem("token_Admin"),
+        },
+        params: {
+          sort: sort,
+          page: page,
+          pageSize: pageSize,
+        },
+      };
+      const dashboardAdmin = await axios.get(
+        `${BASE_API}/admin/v2/order`,
+        config
+      );
+      return dashboardAdmin.data.orders;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+);
 
 const carsDashboard = createAsyncThunk("get/Cars", async () => {
   try {
@@ -37,17 +62,74 @@ const carsDashboard = createAsyncThunk("get/Cars", async () => {
         access_token: localStorage.getItem("token_Admin"),
       },
       params: {
-        size: 1,
-        pageSize: 10,
+        page: 1,
+        pageSize: 50,
       },
     };
-    const getResponse = await axios.get(`${BASE_API}/customer/v2/car`, config);
+    const getResponse = await axios.get(`${BASE_API}/admin/v2/car`, config);
     return getResponse.data.cars;
   } catch (error) {
     console.log(error);
     throw error;
   }
 });
+
+const uploadedCarDashboard = createAsyncThunk(
+  "upload/cars",
+  async (payload) => {
+    try {
+      const config = {
+        headers: {
+          access_token: localStorage.getItem("token_Admin"),
+        },
+      };
+      let formData = new FormData();
+      formData.append("name", payload.name);
+      formData.append("category", payload.category);
+      formData.append("price", payload.price);
+      formData.append("image", payload.image);
+      const postResponseCar = await axios.post(
+        `${BASE_API}/admin/car`,
+        formData,
+        config
+      );
+
+      return postResponseCar.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+);
+
+const editedCarDashboard = createAsyncThunk(
+  "edit/cars",
+  async (payload, thunkAPI) => {
+    try {
+      const config = {
+        headers: {
+          access_token: localStorage.getItem("token_Admin"),
+        },
+      };
+      const state = thunkAPI.getState();
+      let formData = new FormData();
+      formData.append("name", payload.name);
+      formData.append("category", payload.category);
+      formData.append("price", payload.price);
+      formData.append("image", payload.image);
+
+      const editResponseCar = await axios.put(
+        `${BASE_API}/admin/car/${state.dashboardStore.dataCars.id}`,
+        config
+      );
+
+      return editResponseCar.data;
+    } catch (error) {
+      console.log(error);
+      throw error;
+    }
+  }
+);
 
 const deletedCarDashboard = createAsyncThunk("delete/cars", async (payload) => {
   try {
@@ -71,10 +153,19 @@ const dashboardSlice = createSlice({
   name: "dataDashboard",
   initialState,
   reducers: {
+    getChartDashboard(action, state) {
+      state.chartOrder = action.payload;
+    },
     getTableDashboard(action, state) {
       state.dashboardData = action.payload;
     },
     getCarsDashboard(state, action) {
+      state.dataCars = action.payload;
+    },
+    postCarsDashboard(state, action) {
+      state.dataCars = action.payload;
+    },
+    editCarsDashboard(state, action) {
       state.dataCars = action.payload;
     },
     deleteCar(state, action) {
@@ -82,6 +173,9 @@ const dashboardSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(chartDashboard.fulfilled, (state, action) => {
+      state.chartOrder = action.payload;
+    });
     builder.addCase(tableDashboard.fulfilled, (state, action) => {
       state.dashboardData = action.payload;
     });
@@ -93,13 +187,28 @@ const dashboardSlice = createSlice({
         };
       });
     });
-    builder.addCase(deletedCarDashboard.fulfilled);
+    builder.addCase(uploadedCarDashboard.fulfilled, (state, action) => {});
+    builder.addCase(editedCarDashboard.fulfilled, (state, action) => {});
+    builder.addCase(deletedCarDashboard.fulfilled, (state, action) => {});
   },
 });
 
-export const { getTableDashboard, getUpdateCar, getCarsDashboard } =
-  dashboardSlice.actions;
+export const {
+  getChartDashboard,
+  getTableDashboard,
+  getCarsDashboard,
+  postCarsDashboard,
+  editedCarsDashboard,
+  deleteCar,
+} = dashboardSlice.actions;
 
-export { tableDashboard, carsDashboard, deletedCarDashboard };
+export {
+  chartDashboard,
+  tableDashboard,
+  carsDashboard,
+  uploadedCarDashboard,
+  editedCarDashboard,
+  deletedCarDashboard,
+};
 
 export default dashboardSlice;
