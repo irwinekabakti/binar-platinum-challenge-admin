@@ -11,7 +11,6 @@ function TableListOrder() {
 
   const selector = useSelector((state) => state.dashboardStore);
   const selectTable = selector.dashboardData;
-  // console.log(selectTable);
 
   const [sortEmail, setSortEmail] = useState(true);
   const [sortCar, setSortCar] = useState(true);
@@ -119,11 +118,6 @@ function TableListOrder() {
                     onClick={sortEmailClick}>
                     User Email<img src={sort} alt="sort"></img>
                   </th>
-                  {/* <th
-                    className={`th-other ${classes.thOtherDashboard}`}
-                    onClick={sortCarClick}>
-                    Car<img src={sort} alt="sort"></img>
-                  </th> */}
                   <th
                     className={`th-other ${classes.thOtherDashboard}`}
                     onClick={sortCarClick}>
@@ -144,11 +138,6 @@ function TableListOrder() {
                     onClick={sortPriceClick}>
                     Price<img src={sort} alt="sort"></img>
                   </th>
-                  {/* <th
-                    className={`th-other ${classes.thOtherDashboard}`}
-                    onClick={sortCategoryClick}>
-                    Category<img src={sort} alt="sort"></img>
-                  </th> */}
                   <th
                     className={`th-other ${classes.thOtherDashboard}`}
                     onClick={sortCategoryClick}>
@@ -165,7 +154,6 @@ function TableListOrder() {
                     <tr>
                       <td className="text-center">{items.id}</td>
                       <td>{items.User.email}</td>
-                      {/* <td>{items.Car === null ? "Innova" : items.Car.name}</td> */}
                       <td>{items.CarId}</td>
                       <td>
                         {moment(items.start_rent_at).format("DD MMMM yyyy")}
@@ -174,7 +162,6 @@ function TableListOrder() {
                         {moment(items.finish_rent_at).format("DD MMMM yyyy")}
                       </td>
                       <td>Rp {items.total_price.toLocaleString("id-ID")}</td>
-                      {/* <td>2-4 orang</td> */}
                       <td>{items.UserId}</td>
                     </tr>
                   </tbody>

@@ -1,5 +1,4 @@
 import React from "react";
-import axios from "axios";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Col, Form, Row } from "react-bootstrap";
@@ -20,53 +19,10 @@ const CarForm = ({ formFunction }) => {
   const [image, setImage] = useState(null);
   const [category, setCategory] = useState("");
   const dispatch = useDispatch();
+  const selector = useSelector((state) => state.dashboardStore);
+  const selectedToEdit = selector.dataCars;
 
-  const config = {
-    headers: {
-      access_token: localStorage.getItem("token_Admin"),
-    },
-  };
-  let formData = new FormData();
-
-  const uploadEditForm = async () => {
-    try {
-      const response = await axios.put(
-        `https://bootcamp-rent-cars.herokuapp.com/admin/car/${id}`,
-        formData,
-        config
-      );
-      if (response.status === 200) navigate("/cars?formSuccess=true");
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  /*
-  const uploadEditForm = async () => {
-
-    dispatch(editedCarDashboard({ name, price, category, image }))
-  };
-  */
-
-  /*
-  const uploadAddForm = async () => {
-    try {
-      const response = await axios.post(
-        `https://bootcamp-rent-cars.herokuapp.com/admin/car`,
-        formData,
-        config
-      );
-
-      if (response.status === 201) {
-        navigate("/cars?formSuccess=true");
-      }
-    } catch (err) {
-      console.log(err);
-    }
-  };
-  */
-
-  const uploadAddForm = async () => {
+  const addNewCarForm = async () => {
     dispatch(uploadedCarDashboard({ name, price, category, image }))
       .unwrap()
       .then(() => {
@@ -74,23 +30,24 @@ const CarForm = ({ formFunction }) => {
       });
   };
 
-  const appendFormData = (key, value) => {
-    if (value !== "" && value !== null) formData.append(key, value);
+  const editCarForm = async () => {
+    dispatch(editedCarDashboard({ name, price, category, image, id }))
+      .unwrap()
+      .then(() => {
+        navigate("/cars?formSuccess=true");
+      });
   };
 
-  const prepareFormData = (event) => {
-    event.preventDefault();
-    const form = event.currentTarget;
+  const formData = (e) => {
+    e.preventDefault();
+    const form = e.currentTarget;
     if (!!form.checkValidity()) {
-      appendFormData("name", name);
-      appendFormData("price", price);
-      appendFormData("image", image);
-      appendFormData("category", category);
-
-      formFunction === "edit" && uploadEditForm();
       if (formFunction === "add") {
-        formData.append("status", false);
-        uploadAddForm();
+        addNewCarForm();
+      }
+
+      if (formFunction === "edit") {
+        editCarForm();
       }
     }
   };
@@ -113,7 +70,7 @@ const CarForm = ({ formFunction }) => {
   };
 
   return (
-    <Form onSubmit={prepareFormData}>
+    <Form onSubmit={formData}>
       <div className="w-100 bg-white p-3">
         <fieldset className={`${classes.fieldFormSet} w-100`}>
           <Form.Group as={Row} className="mb-3" controlId="name">
@@ -142,6 +99,7 @@ const CarForm = ({ formFunction }) => {
             </Form.Label>
             <Col sm="8">
               <Form.Control
+                value={selectedToEdit.price || ""}
                 type="number"
                 min="9999"
                 placeholder="Input Harga Sewa Mobil"
@@ -202,22 +160,40 @@ const CarForm = ({ formFunction }) => {
               </Form.Select>
             </Col>
           </Form.Group>
-          <div>
-            <Row className="mb-3">
-              <Col sm="4" className="mb-0">
-                Created at
-              </Col>
-              <Col sm="8">-</Col>
-              {/* <Col sm="8">{selectUpdate}</Col> */}
-            </Row>
-            <Row>
-              <Col sm="4" className="mb-0">
-                Updated at
-              </Col>
-              <Col sm="8">-</Col>
-              {/* <Col sm="8">{selectUpdate}</Col> */}
-            </Row>
-          </div>
+          {formFunction === "edit" ? (
+            <div className="formInfo">
+              <div>
+                <Row className="mb-3">
+                  <Col sm="4" className="mb-0">
+                    Created at
+                  </Col>
+                  <Col sm="8">+</Col>
+                </Row>
+                <Row>
+                  <Col sm="4" className="mb-0">
+                    Updated at
+                  </Col>
+                  <Col sm="8">+</Col>
+                </Row>
+              </div>
+            </div>
+          ) : null}
+          {formFunction === "add" ? (
+            <div>
+              <Row className="mb-3">
+                <Col sm="4" className="mb-0">
+                  Created at
+                </Col>
+                <Col sm="8">-</Col>
+              </Row>
+              <Row>
+                <Col sm="4" className="mb-0">
+                  Updated at
+                </Col>
+                <Col sm="8">-</Col>
+              </Row>
+            </div>
+          ) : null}
         </fieldset>
       </div>
       <div className="d-flex" style={{ marginTop: "40px" }}>
@@ -226,11 +202,20 @@ const CarForm = ({ formFunction }) => {
           onClick={backToCars}>
           Cancel
         </Button>
-        <Button
-          type="submit"
-          className={`d-flex align-items-center text-white ${classes.formButtonSave}`}>
-          Save
-        </Button>
+        {formFunction === "edit" ? (
+          <Button
+            type="submit"
+            className={`d-flex align-items-center text-white ${classes.formButtonSave}`}>
+            Edit
+          </Button>
+        ) : null}
+        {formFunction === "add" ? (
+          <Button
+            type="submit"
+            className={`d-flex align-items-center text-white ${classes.formButtonSave}`}>
+            Save
+          </Button>
+        ) : null}
       </div>
     </Form>
   );

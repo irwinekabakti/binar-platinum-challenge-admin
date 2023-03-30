@@ -24,7 +24,6 @@ const chartDashboard = createAsyncThunk("chart/order", async (payload) => {
 
     return response.data;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 });
@@ -47,9 +46,9 @@ const tableDashboard = createAsyncThunk(
         `${BASE_API}/admin/v2/order`,
         config
       );
+
       return dashboardAdmin.data.orders;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
@@ -67,9 +66,9 @@ const carsDashboard = createAsyncThunk("get/Cars", async () => {
       },
     };
     const getResponse = await axios.get(`${BASE_API}/admin/v2/car`, config);
+
     return getResponse.data.cars;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 });
@@ -96,40 +95,36 @@ const uploadedCarDashboard = createAsyncThunk(
 
       return postResponseCar.data;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }
 );
 
-const editedCarDashboard = createAsyncThunk(
-  "edit/cars",
-  async (payload, thunkAPI) => {
-    try {
-      const config = {
-        headers: {
-          access_token: localStorage.getItem("token_Admin"),
-        },
-      };
-      const state = thunkAPI.getState();
-      let formData = new FormData();
-      formData.append("name", payload.name);
-      formData.append("category", payload.category);
-      formData.append("price", payload.price);
-      formData.append("image", payload.image);
+const editedCarDashboard = createAsyncThunk("edit/cars", async (payload) => {
+  try {
+    const config = {
+      headers: {
+        access_token: localStorage.getItem("token_Admin"),
+      },
+    };
 
-      const editResponseCar = await axios.put(
-        `${BASE_API}/admin/car/${state.dashboardStore.dataCars.id}`,
-        config
-      );
+    let formData = new FormData();
+    formData.append("name", payload.name);
+    formData.append("category", payload.category);
+    formData.append("price", payload.price);
+    formData.append("image", payload.image);
 
-      return editResponseCar.data;
-    } catch (error) {
-      console.log(error);
-      throw error;
-    }
+    const editResponseCar = await axios.put(
+      `${BASE_API}/admin/car/${payload.id}`,
+      formData,
+      config
+    );
+
+    return editResponseCar.data;
+  } catch (error) {
+    throw error;
   }
-);
+});
 
 const deletedCarDashboard = createAsyncThunk("delete/cars", async (payload) => {
   try {
@@ -142,9 +137,9 @@ const deletedCarDashboard = createAsyncThunk("delete/cars", async (payload) => {
       `https://bootcamp-rent-cars.herokuapp.com/admin/car/${payload}`,
       config
     );
+
     return response.data;
   } catch (error) {
-    console.log(error);
     throw error;
   }
 });
@@ -198,7 +193,7 @@ export const {
   getTableDashboard,
   getCarsDashboard,
   postCarsDashboard,
-  editedCarsDashboard,
+  editCarsDashboard,
   deleteCar,
 } = dashboardSlice.actions;
 

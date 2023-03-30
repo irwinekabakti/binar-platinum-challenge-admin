@@ -103,7 +103,7 @@ const Cars = () => {
           // navigate("/cars");
         });
     } catch (error) {
-      console.log(error);
+      // console.log(error);
       alert(error);
     }
   };
@@ -114,7 +114,6 @@ const Cars = () => {
         checkFormSuccess();
       })
       .catch((error) => {
-        console.log(error);
         alert(error);
       });
   };
@@ -123,7 +122,6 @@ const Cars = () => {
     deleteCar();
     setShowModal(false);
     setShowHeaderModal(true);
-    // getCars();
   };
 
   const OpenModal = (props) => {
@@ -174,7 +172,6 @@ const Cars = () => {
 
   useEffect(() => {
     getCars();
-    // filterCars();
   }, []);
 
   const filterCars = () => {
@@ -240,7 +237,6 @@ const Cars = () => {
                     className={`d-flex align-items-center ${classes.btnDelete}`}
                     style={{ width: "fit-content" }}
                     onClick={() => {
-                      // setShowModal(true);
                       setId(car.id);
                     }}>
                     <FontAwesomeIcon icon={faTrash} className="me-2 " />
