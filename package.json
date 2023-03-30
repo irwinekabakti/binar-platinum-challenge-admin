@@ -33,13 +33,27 @@
     "build": "react-scripts build",
     "test": "react-scripts test --coverage --watchAll=false",
     "test:update": "react-scripts test --coverage --updateSnapshot --watchAll=false",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint --fix src"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "no-console": "error",
+      "indent": [
+        "error",
+        2,
+        {
+          "ignoredNodes": [
+            "TemplateLiteral"
+          ],
+          "SwitchCase": 1
+        }
+      ]
+    }
   },
   "browserslist": {
     "production": [
@@ -64,7 +78,8 @@
     ],
     "coveragePathIgnorePatterns": [
       "<rootDir>/src/index.js",
-      "<rootDir>/src/reportWebVitals.js"
+      "<rootDir>/src/reportWebVitals.js",
+      "<rootDir>/src/mocks/browser.js"
     ],
     "coverageThreshold": {
       "global": {

@@ -41,7 +41,6 @@ const GraphicCar = () => {
     try {
       dispatch(chartDashboard({ from: startDateRent, until: finishDateRent }));
     } catch (error) {
-      console.log(error);
       alert(error);
     }
   };
@@ -118,7 +117,9 @@ const GraphicCar = () => {
           </p>
           <div className="d-flex">
             <div className={`me-3 ${classes.barBlue}`}></div>
-            <Col className="fw-bold">Rented Car Data Visualization</Col>
+            <Col className="fw-bold" data-testid="titleChartDataVisualization">
+              Rented Car Data Visualization
+            </Col>
           </div>
         </Row>
       </Col>

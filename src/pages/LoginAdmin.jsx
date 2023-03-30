@@ -30,7 +30,6 @@ const LoginAdmin = () => {
   const handleAdminLogin = (e) => {
     setLoading(true);
     e.preventDefault();
-    console.log(`login admin is here`);
     dispatch(loginAdmin({ email: emailAdmin, password: passwordAdmin }))
       .unwrap()
       .then(() => {
@@ -40,7 +39,6 @@ const LoginAdmin = () => {
       .catch((error) => {
         setIsError(true);
         setLoading(false);
-        console.log(error);
       });
   };
 

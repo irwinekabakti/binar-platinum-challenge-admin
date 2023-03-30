@@ -15,7 +15,7 @@ const CarFormPage = ({ currentPage }) => {
         <Col className="px-3">
           <p className="mt-4">
             <strong>
-              Cars {">"} List Car {">"}
+              Cars {">"} List Car {">"}{" "}
             </strong>
             {currentPage === "edit" ? "Edit Car" : "Add New Car"}
           </p>

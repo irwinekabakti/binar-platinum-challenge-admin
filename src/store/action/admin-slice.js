@@ -14,7 +14,6 @@ const loginAdmin = createAsyncThunk(
 
       return get.data.access_token;
     } catch (error) {
-      console.log(error);
       throw error;
     }
   }

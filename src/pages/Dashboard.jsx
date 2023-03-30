@@ -3,7 +3,6 @@ import NavbarAdmin from "../components/Navbar/Navbar";
 import GraphicCar from "../components/Chart/GraphicCar";
 import { Col, Container, Row } from "react-bootstrap";
 import classes from "./Dashboard.module.css";
-// New Table
 import TableListOrder from "../components/Chart/DataTable/IndexTableNum2";
 
 const Dashboard = () => {
@@ -21,8 +20,6 @@ const Dashboard = () => {
           <br />
         </div>
       </Container>
-      {/* <br />
-      <br /> */}
       <TableListOrder />
     </div>
   );
