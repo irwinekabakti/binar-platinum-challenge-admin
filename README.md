@@ -1,3 +1,33 @@
+# MEMBER :
+
+- Irwin Ekabakti (Team Leader)
+- Yusril Amri (Scrum Master)
+- Moch Azharu Zainunniam
+- Novrianggi
+
+# Assignment
+
+# Irwin Ekabakti :
+
+- Login Page
+- Dashboard Page
+- Cars Page
+- Add Car
+- Edit Car
+- Delete Car
+
+# Moch Azharu Zainunniam :
+
+- -
+
+# Novrianggi :
+
+- -
+
+# Yusril Amri :
+
+- -
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

@@ -100,6 +100,26 @@ const uploadedCarDashboard = createAsyncThunk(
   }
 );
 
+const detailCarDashboard = createAsyncThunk("detail/car", async (payload) => {
+  try {
+    const config = {
+      headers: {
+        access_token: localStorage.getItem("token_Admin"),
+      },
+    };
+
+    const detailCar = await axios.get(
+      `${BASE_API}/admin/order/${payload}`,
+      config
+    );
+
+    // console.log(detailCar.data);
+    return detailCar.data;
+  } catch (error) {
+    throw error;
+  }
+});
+
 const editedCarDashboard = createAsyncThunk("edit/cars", async (payload) => {
   try {
     const config = {
@@ -160,6 +180,9 @@ const dashboardSlice = createSlice({
     postCarsDashboard(state, action) {
       state.dataCars = action.payload;
     },
+    getDetailCarDashboard(state, action) {
+      state.dataCars = action.payload;
+    },
     editCarsDashboard(state, action) {
       state.dataCars = action.payload;
     },
@@ -183,6 +206,7 @@ const dashboardSlice = createSlice({
       });
     });
     builder.addCase(uploadedCarDashboard.fulfilled, (state, action) => {});
+    builder.addCase(detailCarDashboard.fulfilled, (state, action) => {});
     builder.addCase(editedCarDashboard.fulfilled, (state, action) => {});
     builder.addCase(deletedCarDashboard.fulfilled, (state, action) => {});
   },
@@ -193,6 +217,7 @@ export const {
   getTableDashboard,
   getCarsDashboard,
   postCarsDashboard,
+  getDetailCarDashboard,
   editCarsDashboard,
   deleteCar,
 } = dashboardSlice.actions;
@@ -202,6 +227,7 @@ export {
   tableDashboard,
   carsDashboard,
   uploadedCarDashboard,
+  detailCarDashboard,
   editedCarDashboard,
   deletedCarDashboard,
 };
