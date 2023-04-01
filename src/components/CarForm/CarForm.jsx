@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Col, Form, Row } from "react-bootstrap";
@@ -8,6 +8,7 @@ import classes from "./CarForm.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import {
   uploadedCarDashboard,
+  detailCarDashboard,
   editedCarDashboard,
 } from "../../store/action/dashboard-slice";
 
@@ -29,6 +30,15 @@ const CarForm = ({ formFunction }) => {
         navigate("/cars?formSuccess=true");
       });
   };
+
+  // useEffect(() => {
+  //   dispatch(detailCarDashboard(id));
+  //   return () => {};
+  // }, [!id]);
+
+  // useEffect(() => {
+  //   dispatch(detailCarDashboard(id));
+  // }, [id]);
 
   const editCarForm = async () => {
     dispatch(editedCarDashboard({ name, price, category, image, id }))
@@ -73,12 +83,20 @@ const CarForm = ({ formFunction }) => {
     <Form onSubmit={formData}>
       <div className="w-100 bg-white p-3">
         <fieldset className={`${classes.fieldFormSet} w-100`}>
-          <Form.Group as={Row} className="mb-3" controlId="name">
+          <Form.Group
+            as={Row}
+            className="mb-3"
+            controlId="name"
+            data-testid="wrapper-labelName">
             <Form.Label
+              data-testid="label-Name"
               column
               sm="4"
               className="mb-0 d-flex align-items-center">
-              Nama/Tipe Mobil<span className="text-danger">*</span>
+              Nama/Tipe Mobil
+              <span className="text-danger" data-testid="label-SpanName">
+                *
+              </span>
             </Form.Label>
             <Col sm="8">
               <Form.Control
@@ -90,18 +108,24 @@ const CarForm = ({ formFunction }) => {
               />
             </Col>
           </Form.Group>
-          <Form.Group as={Row} className="mb-3" controlId="price">
+          <Form.Group
+            as={Row}
+            className="mb-3"
+            controlId="price"
+            data-testid="wrapper-labelPrice">
             <Form.Label
+              data-testid="label-Price"
               column
               sm="4"
               className="mb-0 d-flex align-items-center">
-              Harga<span className="text-danger">*</span>
+              Harga
+              <span className="text-danger" data-testid="label-SpanPrice">
+                *
+              </span>
             </Form.Label>
             <Col sm="8">
               <Form.Control
-                value={selectedToEdit.price || ""}
                 type="number"
-                min="9999"
                 placeholder="Input Harga Sewa Mobil"
                 required={formFunction === "edit" ? false : true}
                 className={classes.formBox}
@@ -109,12 +133,20 @@ const CarForm = ({ formFunction }) => {
               />
             </Col>
           </Form.Group>
-          <Form.Group as={Row} className="mb-3" controlId="image">
+          <Form.Group
+            as={Row}
+            className="mb-3"
+            controlId="image"
+            data-testid="wrapper-Photo">
             <Form.Label
+              data-testid="label-Photo"
               column
               sm="4"
               className="mb-0 d-flex align-items-center">
-              Foto<span className="text-danger">*</span>
+              Foto
+              <span className="text-danger" data-testid="label-SpanPhoto">
+                *
+              </span>
             </Form.Label>
             <Col sm="8" className="position-relative">
               <img
@@ -142,12 +174,20 @@ const CarForm = ({ formFunction }) => {
               </p>
             </Col>
           </Form.Group>
-          <Form.Group as={Row} className="mb-3" controlId="category">
+          <Form.Group
+            as={Row}
+            className="mb-3"
+            controlId="category"
+            data-testid="wrapper-Category">
             <Form.Label
+              data-testid="label-Category"
               column
               sm="4"
               className="mb-0 d-flex align-items-center">
-              Kategori<span className="text-danger">*</span>
+              Kategori
+              <span className="text-danger" data-testid="label-SpanCategory">
+                *
+              </span>
             </Form.Label>
             <Col sm="8">
               <Form.Select
@@ -160,7 +200,7 @@ const CarForm = ({ formFunction }) => {
               </Form.Select>
             </Col>
           </Form.Group>
-          {formFunction === "edit" ? (
+          {/* {formFunction === "edit" ? (
             <div className="formInfo">
               <div>
                 <Row className="mb-3">
@@ -193,7 +233,21 @@ const CarForm = ({ formFunction }) => {
                 <Col sm="8">-</Col>
               </Row>
             </div>
-          ) : null}
+          ) : null} */}
+          <div className="formInfo">
+            <Row className="mb-3">
+              <Col sm="4" className="mb-0">
+                Created at
+              </Col>
+              <Col sm="8">-</Col>
+            </Row>
+            <Row>
+              <Col sm="4" className="mb-0">
+                Updated at
+              </Col>
+              <Col sm="8">-</Col>
+            </Row>
+          </div>
         </fieldset>
       </div>
       <div className="d-flex" style={{ marginTop: "40px" }}>

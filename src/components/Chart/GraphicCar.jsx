@@ -117,7 +117,7 @@ const GraphicCar = () => {
           </p>
           <div className="d-flex">
             <div className={`me-3 ${classes.barBlue}`}></div>
-            <Col className="fw-bold" data-testid="titleChartDataVisualization">
+            <Col className="fw-bold" data-testid="title-ChartDataVisualization">
               Rented Car Data Visualization
             </Col>
           </div>
