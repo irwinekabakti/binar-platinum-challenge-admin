@@ -13,6 +13,8 @@ const LoginAdmin = () => {
   const [passwordAdmin, setPasswordAdmin] = useState();
   const [isError, setIsError] = useState(false);
   const [loading, setLoading] = useState();
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleEmailAdmin = (e) => {
     e.preventDefault();
@@ -23,9 +25,6 @@ const LoginAdmin = () => {
     e.preventDefault();
     setPasswordAdmin(e.target.value);
   };
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
 
   const handleAdminLogin = (e) => {
     setLoading(true);
@@ -63,7 +62,9 @@ const LoginAdmin = () => {
             <div className={classes.adminForm}>
               <img src={logoLogin} alt="Sign-In-Admin-BCR" />
 
-              <h1 className={`fw-bold mt-5 ${classes.headingFormAdmin}`}>
+              <h1
+                className={`fw-bold mt-5 ${classes.headingFormAdmin}`}
+                data-testid="title-Login">
                 Welcome, Admin BCR
               </h1>
               {isError ? (
@@ -93,6 +94,7 @@ const LoginAdmin = () => {
                       Password
                     </Form.Label>
                     <Form.Control
+                      data-testid="type-button-password"
                       type="password"
                       onChange={handlePasswordAdmin}
                       minLength="6"

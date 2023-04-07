@@ -1,0 +1,695 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UI Dashboard Test UI Dashboard should match snapshot 1`] = `
+<div>
+  <div
+    className="p-0 m-0 containerDashboard container-fluid"
+    data-testid="container-Dashboard"
+  >
+    <div
+      className="bg-white navigation-panel position-absolute h-100  navPanelClass"
+    >
+      <div
+        className="dashboard-menu w-100 flex-column"
+      >
+        <p
+          className="w-100 ps-4 pe-3 titleDashboard"
+        >
+          DASHBOARD
+        </p>
+        <ul
+          className="p-0 listDashboard"
+        >
+          <li
+            className="ps-4 pe-3 listNameDashboard"
+          >
+            Dashboard
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div
+      className="navigation-menu position-absolute flex-column  navMenuClass  nav"
+      onKeyDown={[Function]}
+    >
+      <a
+        className="navigationTab w-100 d-flex flex-column justify-content-center align-items-center text-center selected nav-link"
+        data-rr-ui-event-key={null}
+        href="#"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        style={
+          Object {
+            "height": "64px",
+          }
+        }
+        tabIndex={0}
+      >
+        <img
+          alt="dashboard"
+          src="fi_home.svg"
+        />
+        <p
+          className="m-0 text-white navTitle"
+        >
+          Dashboard
+        </p>
+      </a>
+      <a
+        className="navigation-tab w-100 d-flex flex-column justify-content-center align-items-center text-center false nav-link"
+        data-rr-ui-event-key={null}
+        href="#"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        role="button"
+        style={
+          Object {
+            "height": "64px",
+          }
+        }
+        tabIndex={0}
+      >
+        <img
+          alt="cars"
+          src="fi_truck.svg"
+        />
+        <p
+          className="m-0 text-white navTitle"
+        >
+          Cars
+        </p>
+      </a>
+    </div>
+    <nav
+      className="bg-white p-0 mainNavbar navbar navbar-expand navbar-light"
+    >
+      <div
+        className="h-100 p-0 d-flex justify-content-between align-items-center container-fluid"
+      >
+        <div
+          className="h-100 d-flex colNav col-auto"
+        >
+          <button
+            aria-label="Navigation Menu"
+            className="menu-button d-flex justify-content-center align-items-center position-relative btnNavSideBar btn btn-primary"
+            disabled={false}
+            onClick={[Function]}
+            type="button"
+          >
+            <div
+              className="iconSideNav"
+            />
+          </button>
+          <div
+            className="h-100 w-100 d-flex align-items-center px-4 spaceNavTop"
+          >
+            <div
+              className="iconTopNav"
+            />
+          </div>
+        </div>
+        <div
+          className="h-100 d-flex justify-content-between col"
+        >
+          <div
+            className="h-100 w-100 d-flex justify-content-center align-items-center containerBurgerButton"
+            data-testid="container-burger-button-custom"
+          >
+            <button
+              className="bg-white p-1 d-flex flex-column border-0 btnBurgerButton btn btn-primary"
+              data-testid="burger-button-custom"
+              disabled={false}
+              type="button"
+            >
+              <span
+                className="bg-dark burgerButton"
+              />
+              <span
+                className="bg-dark burgerButton"
+              />
+              <span
+                className="bg-dark burgerButton"
+              />
+            </button>
+          </div>
+          <div
+            className="d-flex h-100"
+          >
+            <form
+              className="d-none d-md-flex align-items-center pe-3"
+            >
+              <fieldset
+                className="position-relative d-flex"
+              >
+                <input
+                  className="formNavbar formNavbar form-control"
+                  placeholder="Search"
+                  type="text"
+                />
+                <img
+                  alt="search"
+                  aria-hidden="true"
+                  className="iconSearch"
+                  src="fi_search.svg"
+                />
+                <button
+                  className="fw-bold btnNavbarSearch btn btn-primary"
+                  disabled={false}
+                  type="button"
+                >
+                  Search
+                </button>
+              </fieldset>
+            </form>
+            <div
+              className="h-100 w-100 pe-3 d-flex justify-content-center align-items-center containerProfile"
+            >
+              <div
+                className="dropdown nav-item"
+              >
+                <button
+                  aria-expanded={false}
+                  className="bg-white border-0 d-flex align-items-center admin-menu dropdown-toggle btn btn-primary"
+                  disabled={false}
+                  id="dropdown-1"
+                  onClick={[Function]}
+                  type="button"
+                >
+                  <div
+                    className="rounded-circle d-flex justify-content-center align-items-center ImageProfileNavbar"
+                  >
+                    R
+                  </div>
+                  <div
+                    className="px-2 text-dark profileNavbar"
+                  >
+                    Marcus Raspot
+                  </div>
+                  <img
+                    alt="icon-navbar"
+                    aria-hidden="true"
+                    src="chevron-down.svg"
+                  />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+    <div
+      className="m-0 row"
+    >
+      <div
+        className="colDashboard d-none d-md-block h-100 col-auto"
+      />
+    </div>
+    <div
+      className="dataGraphTable"
+    >
+      <div
+        className="grafic-title d-flex align-items-center col"
+      >
+        <div
+          className="row"
+          data-testid="container-Title"
+        >
+          <p
+            className="mt-2"
+            data-testid="title-Dashboard"
+          >
+            <strong>
+              Dashboard 
+               &gt; 
+               
+            </strong>
+             Dashboard
+          </p>
+          <div
+            className="d-flex"
+          >
+            <div
+              className="me-3 barBlue"
+            />
+            <div
+              className="fw-bold col"
+              data-testid="title-ChartDataVisualization"
+            >
+              Rented Car Data Visualization
+            </div>
+          </div>
+        </div>
+      </div>
+      <br />
+      <div
+        className="col"
+      >
+        <div
+          className="detailSelect col"
+        >
+          Month
+        </div>
+        <form
+          className="d-flex mb-5"
+        >
+          <select
+            aria-label="Default select example"
+            className="form-select"
+            onChange={[Function]}
+            style={
+              Object {
+                "borderRadius": 2,
+                "fontSize": 12,
+                "width": 122,
+              }
+            }
+          >
+            <option
+              disabled={true}
+            >
+              Open this select menu
+            </option>
+            <option
+              value={1}
+            >
+              January
+               - 2022
+            </option>
+            <option
+              value={2}
+            >
+              February
+               - 2022
+            </option>
+            <option
+              value={3}
+            >
+              March
+               - 2022
+            </option>
+            <option
+              value={4}
+            >
+              April
+               - 2022
+            </option>
+            <option
+              value={5}
+            >
+              May
+               - 2022
+            </option>
+            <option
+              value={6}
+            >
+              June
+               - 2022
+            </option>
+            <option
+              value={7}
+            >
+              July
+               - 2022
+            </option>
+            <option
+              value={8}
+            >
+              August
+               - 2022
+            </option>
+            <option
+              value={9}
+            >
+              September
+               - 2022
+            </option>
+            <option
+              value={10}
+            >
+              October
+               - 2022
+            </option>
+            <option
+              value={11}
+            >
+              November
+               - 2022
+            </option>
+            <option
+              value={12}
+            >
+              December
+               - 2022
+            </option>
+          </select>
+          <br />
+          <button
+            className="btnGo btn btn-outline-none"
+            disabled={false}
+            type="button"
+          >
+            Go
+          </button>
+        </form>
+      </div>
+      <div />
+      <br />
+    </div>
+  </div>
+  <div
+    className="containerTable"
+  >
+    <div
+      className="container"
+    >
+      <div
+        className="d-block"
+      >
+        <div
+          className="wrapperDataChart"
+        >
+          <h4
+            className="fw-bold pt-5 mt-5"
+            data-testid="title-TableDashboard"
+          >
+            Dashboard
+          </h4>
+          <div
+            className="d-flex"
+          >
+            <div
+              className="me-3 barBlue"
+            />
+            <h6
+              className="fw-bold mb-3"
+            >
+              List Order
+            </h6>
+          </div>
+        </div>
+        <div
+          className="container mt-5 justify-content-end"
+        >
+          <table
+            className="table tableDashboard"
+          >
+            <thead
+              className="table-head tableDashboardHead"
+            >
+              <tr>
+                <th
+                  className="th-no thNumberDashboard"
+                >
+                  No
+                </th>
+                <th
+                  className="th-email thEmailDashboard"
+                  onClick={[Function]}
+                >
+                  User Email
+                  <img
+                    alt="sort"
+                    src="fi_sort.svg"
+                  />
+                </th>
+                <th
+                  className="th-other thOtherDashboard"
+                  onClick={[Function]}
+                >
+                  Car ID
+                  <img
+                    alt="sort"
+                    src="fi_sort.svg"
+                  />
+                </th>
+                <th
+                  className="th-other thOtherDashboard"
+                  onClick={[Function]}
+                >
+                  Start Rent
+                  <img
+                    alt="sort"
+                    src="fi_sort.svg"
+                  />
+                </th>
+                <th
+                  className="th-other thOtherDashboard"
+                  onClick={[Function]}
+                >
+                  Finish Rent
+                  <img
+                    alt="sort"
+                    src="fi_sort.svg"
+                  />
+                </th>
+                <th
+                  className="th-other thOtherDashboard"
+                  onClick={[Function]}
+                >
+                  Price
+                  <img
+                    alt="sort"
+                    src="fi_sort.svg"
+                  />
+                </th>
+                <th
+                  className="th-other thOtherDashboard"
+                  onClick={[Function]}
+                >
+                  User ID
+                  <img
+                    alt="sort"
+                    src="fi_sort.svg"
+                  />
+                </th>
+              </tr>
+            </thead>
+            <tbody
+              className="table-body tableBodyDashboard"
+            />
+          </table>
+          <div
+            className="d-flex justify-content-between align-items-end mx-4"
+          >
+            <div
+              className="d-flex gap-5 buttonRight"
+            >
+              <div>
+                <p
+                  className="table-dropdown-title tableDropdownTitle"
+                >
+                  Limit
+                </p>
+                <select
+                  className="table-dropdown tableDropdown"
+                  defaultValue="choose"
+                  onChange={[Function]}
+                >
+                  <option
+                    value="10"
+                  >
+                    10
+                  </option>
+                  <option
+                    value="15"
+                  >
+                    15
+                  </option>
+                  <option
+                    value="20"
+                  >
+                    20
+                  </option>
+                  <option
+                    value="25"
+                  >
+                    25
+                  </option>
+                  <option
+                    value="30"
+                  >
+                    30
+                  </option>
+                  <option
+                    value="35"
+                  >
+                    35
+                  </option>
+                </select>
+              </div>
+              <div>
+                <p
+                  className="table-dropdown-title tableDropdownTitle"
+                >
+                  Jump to Page
+                </p>
+                <select
+                  className="table-dropdown tableDropdown"
+                  defaultValue="1"
+                  onChange={[Function]}
+                >
+                  <option
+                    value="1"
+                  >
+                    1
+                  </option>
+                  <option
+                    value="2"
+                  >
+                    2
+                  </option>
+                  <option
+                    value="3"
+                  >
+                    3
+                  </option>
+                  <option
+                    value="4"
+                  >
+                    4
+                  </option>
+                  <option
+                    value="5"
+                  >
+                    5
+                  </option>
+                  <option
+                    value="6"
+                  >
+                    6
+                  </option>
+                  <option
+                    value="7"
+                  >
+                    7
+                  </option>
+                  <option
+                    value="8"
+                  >
+                    8
+                  </option>
+                  <option
+                    value="9"
+                  >
+                    9
+                  </option>
+                  <option
+                    value="10"
+                  >
+                    10
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div
+              className="d-flex gap-1"
+            >
+              <div
+                className="tablePageActive"
+                onClick={[Function]}
+              >
+                <p
+                  className="m-0"
+                >
+                  1
+                </p>
+              </div>
+              <div
+                className="tablePage"
+                onClick={[Function]}
+              >
+                <p
+                  className="m-0"
+                >
+                  2
+                </p>
+              </div>
+              <div
+                className="tablePage"
+                onClick={[Function]}
+              >
+                <p
+                  className="m-0"
+                >
+                  3
+                </p>
+              </div>
+              <div
+                className="tablePage"
+                onClick={[Function]}
+              >
+                <p
+                  className="m-0"
+                >
+                  4
+                </p>
+              </div>
+              <div
+                className="tablePage"
+                onClick={[Function]}
+              >
+                <p
+                  className="m-0"
+                >
+                  5
+                </p>
+              </div>
+              <div
+                className="tablePage"
+                onClick={[Function]}
+              >
+                <p
+                  className="m-0"
+                >
+                  6
+                </p>
+              </div>
+              <div
+                className="tablePage"
+                onClick={[Function]}
+              >
+                <p
+                  className="m-0"
+                >
+                  7
+                </p>
+              </div>
+              <div
+                className="tablePage"
+                onClick={[Function]}
+              >
+                <p
+                  className="m-0"
+                >
+                  8
+                </p>
+              </div>
+              <div
+                className="tablePage"
+                onClick={[Function]}
+              >
+                <p
+                  className="m-0"
+                >
+                  9
+                </p>
+              </div>
+              <div
+                className="tablePage"
+                onClick={[Function]}
+              >
+                <p
+                  className="m-0"
+                >
+                  10
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

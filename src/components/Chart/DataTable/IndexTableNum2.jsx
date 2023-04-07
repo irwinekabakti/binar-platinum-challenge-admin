@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { tableDashboard } from "../../../store/action/dashboard-slice";
 import classes from "./TableStyleNew.module.css";
 
-function TableListOrder() {
+const TableListOrder = () => {
   const dispatch = useDispatch();
   const jumpToPage = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"];
 
@@ -102,7 +102,11 @@ function TableListOrder() {
       <div className="container">
         <div className="d-block">
           <div className={classes.wrapperDataChart}>
-            <h4 className="fw-bold pt-5 mt-5">Dashboard</h4>
+            <h4
+              className="fw-bold pt-5 mt-5"
+              data-testid="title-TableDashboard">
+              Dashboard
+            </h4>
             <div className="d-flex">
               <div className={`me-3 ${classes.barBlue}`}></div>
               <h6 className="fw-bold mb-3">List Order</h6>
@@ -145,28 +149,31 @@ function TableListOrder() {
                   </th>
                 </tr>
               </thead>
-
-              {selectTable.map((items, key) => {
-                return (
-                  <tbody
-                    key={key}
-                    className={`table-body ${classes.tableBodyDashboard}`}>
-                    <tr>
-                      <td className="text-center">{items.id}</td>
-                      <td>{items.User.email}</td>
-                      <td>{items.CarId}</td>
-                      <td>
-                        {moment(items.start_rent_at).format("DD MMMM yyyy")}
-                      </td>
-                      <td>
-                        {moment(items.finish_rent_at).format("DD MMMM yyyy")}
-                      </td>
-                      <td>Rp {items.total_price.toLocaleString("id-ID")}</td>
-                      <td>{items.UserId}</td>
-                    </tr>
-                  </tbody>
-                );
-              })}
+              <tbody className={`table-body ${classes.tableBodyDashboard}`}>
+                {selectTable.length
+                  ? selectTable?.map((items, key) => {
+                    return (
+                      <tr key={key}>
+                        <td className="text-center">{items.id}</td>
+                        <td>{items.User.email}</td>
+                        <td>{items.CarId}</td>
+                        <td>
+                          {moment(items.start_rent_at).format("DD MMMM yyyy")}
+                        </td>
+                        <td>
+                          {moment(items.finish_rent_at).format(
+                            "DD MMMM yyyy"
+                          )}
+                        </td>
+                        <td>
+                            Rp {items.total_price.toLocaleString("id-ID")}
+                        </td>
+                        <td>{items.UserId}</td>
+                      </tr>
+                    );
+                  })
+                  : null}
+              </tbody>
             </table>
             <div className="d-flex justify-content-between align-items-end mx-4">
               <div className={`d-flex gap-5 ${classes.buttonRight}`}>
