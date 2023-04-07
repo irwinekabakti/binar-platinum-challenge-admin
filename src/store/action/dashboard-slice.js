@@ -113,7 +113,6 @@ const detailCarDashboard = createAsyncThunk("detail/car", async (payload) => {
       config
     );
 
-    // console.log(detailCar.data);
     return detailCar.data;
   } catch (error) {
     throw error;

@@ -1,14 +1,13 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import iconUpload from "../../assets/fi_upload.svg";
 import classes from "./CarForm.module.css";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   uploadedCarDashboard,
-  detailCarDashboard,
   editedCarDashboard,
 } from "../../store/action/dashboard-slice";
 
@@ -20,8 +19,6 @@ const CarForm = ({ formFunction }) => {
   const [image, setImage] = useState(null);
   const [category, setCategory] = useState("");
   const dispatch = useDispatch();
-  const selector = useSelector((state) => state.dashboardStore);
-  const selectedToEdit = selector.dataCars;
 
   const addNewCarForm = async () => {
     dispatch(uploadedCarDashboard({ name, price, category, image }))
@@ -30,15 +27,6 @@ const CarForm = ({ formFunction }) => {
         navigate("/cars?formSuccess=true");
       });
   };
-
-  // useEffect(() => {
-  //   dispatch(detailCarDashboard(id));
-  //   return () => {};
-  // }, [!id]);
-
-  // useEffect(() => {
-  //   dispatch(detailCarDashboard(id));
-  // }, [id]);
 
   const editCarForm = async () => {
     dispatch(editedCarDashboard({ name, price, category, image, id }))
@@ -200,40 +188,6 @@ const CarForm = ({ formFunction }) => {
               </Form.Select>
             </Col>
           </Form.Group>
-          {/* {formFunction === "edit" ? (
-            <div className="formInfo">
-              <div>
-                <Row className="mb-3">
-                  <Col sm="4" className="mb-0">
-                    Created at
-                  </Col>
-                  <Col sm="8">+</Col>
-                </Row>
-                <Row>
-                  <Col sm="4" className="mb-0">
-                    Updated at
-                  </Col>
-                  <Col sm="8">+</Col>
-                </Row>
-              </div>
-            </div>
-          ) : null}
-          {formFunction === "add" ? (
-            <div>
-              <Row className="mb-3">
-                <Col sm="4" className="mb-0">
-                  Created at
-                </Col>
-                <Col sm="8">-</Col>
-              </Row>
-              <Row>
-                <Col sm="4" className="mb-0">
-                  Updated at
-                </Col>
-                <Col sm="8">-</Col>
-              </Row>
-            </div>
-          ) : null} */}
           <div className="formInfo">
             <Row className="mb-3">
               <Col sm="4" className="mb-0">

@@ -25,6 +25,7 @@ exports[`UI LoginAdmin test UI LoginAdmin should match snapshot 1`] = `
       />
       <h1
         className="fw-bold mt-5 headingFormAdmin"
+        data-testid="title-Login"
       >
         Welcome, Admin BCR
       </h1>
@@ -65,6 +66,7 @@ exports[`UI LoginAdmin test UI LoginAdmin should match snapshot 1`] = `
             </label>
             <input
               className="inputPassword form-control"
+              data-testid="type-button-password"
               id="password"
               minLength="6"
               onChange={[Function]}

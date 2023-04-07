@@ -1,0 +1,294 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UI Cars Test UI Cars should match snapshot 1`] = `
+<div
+  className="p-0 m-0 containerCarsPage container-fluid"
+>
+  <div
+    className="bg-white navigation-panel position-absolute h-100  navPanelClass"
+  >
+    <div
+      className="cars-menu w-100 flex-column"
+    >
+      <p
+        className="w-100 ps-4 pe-3 titleCars"
+      >
+        CARS
+      </p>
+      <ul
+        className="p-0 listCars"
+      >
+        <li
+          className="ps-4 pe-3 listNameCars"
+        >
+          List Car
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div
+    className="navigation-menu position-absolute flex-column  navMenuClass  nav"
+    onKeyDown={[Function]}
+  >
+    <a
+      className="navigationTab w-100 d-flex flex-column justify-content-center align-items-center text-center false nav-link"
+      data-rr-ui-event-key={null}
+      href="#"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "height": "64px",
+        }
+      }
+      tabIndex={0}
+    >
+      <img
+        alt="dashboard"
+        src="fi_home.svg"
+      />
+      <p
+        className="m-0 text-white navTitle"
+      >
+        Dashboard
+      </p>
+    </a>
+    <a
+      className="navigation-tab w-100 d-flex flex-column justify-content-center align-items-center text-center selected nav-link"
+      data-rr-ui-event-key={null}
+      href="#"
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      role="button"
+      style={
+        Object {
+          "height": "64px",
+        }
+      }
+      tabIndex={0}
+    >
+      <img
+        alt="cars"
+        src="fi_truck.svg"
+      />
+      <p
+        className="m-0 text-white navTitle"
+      >
+        Cars
+      </p>
+    </a>
+  </div>
+  <nav
+    className="bg-white p-0 mainNavbar navbar navbar-expand navbar-light"
+  >
+    <div
+      className="h-100 p-0 d-flex justify-content-between align-items-center container-fluid"
+    >
+      <div
+        className="h-100 d-flex colNav col-auto"
+      >
+        <button
+          aria-label="Navigation Menu"
+          className="menu-button d-flex justify-content-center align-items-center position-relative btnNavSideBar btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <div
+            className="iconSideNav"
+          />
+        </button>
+        <div
+          className="h-100 w-100 d-flex align-items-center px-4 spaceNavTop"
+        >
+          <div
+            className="iconTopNav"
+          />
+        </div>
+      </div>
+      <div
+        className="h-100 d-flex justify-content-between col"
+      >
+        <div
+          className="h-100 w-100 d-flex justify-content-center align-items-center containerBurgerButton"
+          data-testid="container-burger-button-custom"
+        >
+          <button
+            className="bg-white p-1 d-flex flex-column border-0 btnBurgerButton btn btn-primary"
+            data-testid="burger-button-custom"
+            disabled={false}
+            type="button"
+          >
+            <span
+              className="bg-dark burgerButton"
+            />
+            <span
+              className="bg-dark burgerButton"
+            />
+            <span
+              className="bg-dark burgerButton"
+            />
+          </button>
+        </div>
+        <div
+          className="d-flex h-100"
+        >
+          <form
+            className="d-none d-md-flex align-items-center pe-3"
+          >
+            <fieldset
+              className="position-relative d-flex"
+            >
+              <input
+                className="formNavbar formNavbar form-control"
+                placeholder="Search"
+                type="text"
+              />
+              <img
+                alt="search"
+                aria-hidden="true"
+                className="iconSearch"
+                src="fi_search.svg"
+              />
+              <button
+                className="fw-bold btnNavbarSearch btn btn-primary"
+                disabled={false}
+                type="button"
+              >
+                Search
+              </button>
+            </fieldset>
+          </form>
+          <div
+            className="h-100 w-100 pe-3 d-flex justify-content-center align-items-center containerProfile"
+          >
+            <div
+              className="dropdown nav-item"
+            >
+              <button
+                aria-expanded={false}
+                className="bg-white border-0 d-flex align-items-center admin-menu dropdown-toggle btn btn-primary"
+                disabled={false}
+                id="dropdown-1"
+                onClick={[Function]}
+                type="button"
+              >
+                <div
+                  className="rounded-circle d-flex justify-content-center align-items-center ImageProfileNavbar"
+                >
+                  R
+                </div>
+                <div
+                  className="px-2 text-dark profileNavbar"
+                >
+                  Marcus Raspot
+                </div>
+                <img
+                  alt="icon-navbar"
+                  aria-hidden="true"
+                  src="chevron-down.svg"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div
+    className="m-0 row"
+  >
+    <div
+      className="d-none d-md-block h-100 colCarsPage col-auto"
+    />
+    <div
+      className="col"
+      data-testid="container-Title"
+    >
+      <p
+        className="mt-4"
+        data-testid="title-Cars"
+      >
+        <strong>
+          Cars 
+          &gt;
+        </strong>
+         List Car
+      </p>
+      <h5
+        className="mt-4"
+        data-testid="title-Cars-2"
+      >
+        <strong>
+          List Car
+        </strong>
+      </h5>
+      <div
+        className="d-flex justify-content-end"
+      >
+        <button
+          className="pe-3 mb-2 fw-bold btnAddCar btn btn-primary"
+          disabled={false}
+          onClick={[Function]}
+          type="button"
+        >
+          <svg
+            aria-hidden="true"
+            className="svg-inline--fa fa-plus me-2 "
+            data-icon="plus"
+            data-prefix="fas"
+            focusable="false"
+            role="img"
+            style={Object {}}
+            viewBox="0 0 448 512"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M240 80c0-17.7-14.3-32-32-32s-32 14.3-32 32V224H32c-17.7 0-32 14.3-32 32s14.3 32 32 32H176V432c0 17.7 14.3 32 32 32s32-14.3 32-32V288H384c17.7 0 32-14.3 32-32s-14.3-32-32-32H240V80z"
+              fill="currentColor"
+              style={Object {}}
+            />
+          </svg>
+          Add New Car
+        </button>
+      </div>
+      <button
+        className="me-3 mb-2 btnFilterCars btn btn-primary"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        All
+      </button>
+      <button
+        className="me-3 mb-2 btnFilterCars btn btn-primary"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        2 - 4 people
+      </button>
+      <button
+        className="me-3 mb-2 btnFilterCars btn btn-primary"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        4 - 6 people
+      </button>
+      <button
+        className="me-3 mb-2 btnFilterCars btn btn-primary"
+        disabled={false}
+        onClick={[Function]}
+        type="button"
+      >
+        6 - 8 people
+      </button>
+      <div
+        className="g-4 mb-5 mt-0 row"
+      />
+    </div>
+  </div>
+</div>
+`;

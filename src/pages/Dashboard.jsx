@@ -8,7 +8,7 @@ import TableListOrder from "../components/Chart/DataTable/IndexTableNum2";
 const Dashboard = () => {
   return (
     <div>
-      <Container fluid className={`p-0 m-0 ${classes.containerDashboard}`}>
+      <Container fluid className={`p-0 m-0 ${classes.containerDashboard}`} data-testid="container-Dashboard">
         <NavbarAdmin currentPage="dashboard" />
         <Row className="m-0">
           <Col

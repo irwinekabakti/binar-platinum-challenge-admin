@@ -195,7 +195,7 @@ const Cars = () => {
             key={car.id}>
             <Card className="cardCars mt-0">
               <div className={classes.wrapperImageCars}>
-                <Card.Img src={car.image} />
+                <Card.Img src={car.image ? car.image : "Photo doesn't exist"} />
               </div>
               <Card.Body>
                 <Card.Text className="fw-bold">{car.name}</Card.Text>
@@ -267,11 +267,11 @@ const Cars = () => {
         <Col
           xs="auto"
           className={`d-none d-md-block h-100 ${classes.colCarsPage}`}></Col>
-        <Col>
-          <p className="mt-4">
+        <Col data-testid="container-Title">
+          <p className="mt-4" data-testid="title-Cars">
             <strong>Cars {">"}</strong> List Car
           </p>
-          <h5 className="mt-4">
+          <h5 className="mt-4" data-testid="title-Cars-2">
             <strong>List Car</strong>
           </h5>
           <div className="d-flex justify-content-end">

@@ -111,8 +111,8 @@ const GraphicCar = () => {
   return (
     <>
       <Col className="grafic-title d-flex align-items-center">
-        <Row>
-          <p className="mt-2">
+        <Row data-testid="container-Title">
+          <p className="mt-2" data-testid="title-Dashboard">
             <strong>Dashboard {" > "} </strong> Dashboard
           </p>
           <div className="d-flex">

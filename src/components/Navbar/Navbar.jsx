@@ -179,7 +179,7 @@ const NavbarAdmin = ({ currentPage }) => {
               <div
                 className={`h-100 w-100 pe-3 d-flex justify-content-center align-items-center ${classes.containerProfile}`}>
                 <Dropdown as={NavItem}>
-                  <Dropdown.Toggle className="bg-white border-0 d-flex align-items-center admin-menu">
+                  <Dropdown.Toggle className="bg-white border-0 d-flex align-items-center admin-menu" id="dropdown-1">
                     <div
                       className={`rounded-circle d-flex justify-content-center align-items-center ${classes.ImageProfileNavbar}`}>
                       R
