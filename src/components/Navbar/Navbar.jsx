@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, Fragment } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   Button,
@@ -9,6 +9,10 @@ import {
   Nav,
   Navbar,
   NavItem,
+  Toast,
+  ToastContainer,
+  ToastHeader,
+  ToastBody,
 } from "react-bootstrap";
 import iconSearch from "../../assets/fi_search.svg";
 import iconDropdown from "../../assets/chevron-down.svg";
@@ -20,17 +24,12 @@ import { logout } from "../../store/action/admin-slice";
 
 const NavbarAdmin = ({ currentPage }) => {
   const navbarRef = useRef();
+  const [showToast, setShowToast] = useState(false);
   const [isSidebarActive, setIsSidebarActive] = useState(false);
   const [navPanelCustom, setNavPanelCustom] = useState("");
   const [navMenuCustom, setNavMenuCustom] = useState("");
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const handleLogoutAdmin = () => {
-    dispatch(logout());
-    // navigate("/loginAdmin");
-    navigate("/");
-  };
 
   const handleSidebar = () => {
     if (!isSidebarActive) {
@@ -81,8 +80,38 @@ const NavbarAdmin = ({ currentPage }) => {
     }
   };
 
+  const handleLogoutAdmin = () => {
+    setTimeout(() => {
+      setShowToast(true);
+    }, 1000);
+    setTimeout(() => {
+      dispatch(logout());
+    }, 2500);
+    setTimeout(() => {
+      navigate("/");
+    }, 3000);
+  };
+
   return (
-    <>
+    <Fragment>
+      {showToast ? (
+        <ToastContainer className="p-3" position="top-center">
+          <Toast
+            className="d-inline-block m-1"
+            bg="success"
+            onClose={() => setShowToast(false)}
+            show={showToast}
+            delay={3000}>
+            <ToastHeader>
+              <strong className="me-auto text-dark">Message</strong>
+              <small className="text-dark">now</small>
+            </ToastHeader>
+            <ToastBody className="text-white fw-bold">
+              Logout Successful !
+            </ToastBody>
+          </Toast>
+        </ToastContainer>
+      ) : null}
       <div
         className={`bg-white navigation-panel position-absolute h-100 ${navPanelCustom} ${classes.navPanelClass}`}>
         {currentPage === "dashboard" && (
@@ -179,7 +208,9 @@ const NavbarAdmin = ({ currentPage }) => {
               <div
                 className={`h-100 w-100 pe-3 d-flex justify-content-center align-items-center ${classes.containerProfile}`}>
                 <Dropdown as={NavItem}>
-                  <Dropdown.Toggle className="bg-white border-0 d-flex align-items-center admin-menu" id="dropdown-1">
+                  <Dropdown.Toggle
+                    className="bg-white border-0 d-flex align-items-center admin-menu"
+                    id="dropdown-1">
                     <div
                       className={`rounded-circle d-flex justify-content-center align-items-center ${classes.ImageProfileNavbar}`}>
                       R
@@ -204,7 +235,7 @@ const NavbarAdmin = ({ currentPage }) => {
           </Col>
         </Container>
       </Navbar>
-    </>
+    </Fragment>
   );
 };
 
