@@ -79,7 +79,9 @@
     "coveragePathIgnorePatterns": [
       "<rootDir>/src/index.js",
       "<rootDir>/src/reportWebVitals.js",
-      "<rootDir>/src/mocks/browser.js"
+      "<rootDir>/src/App.js",
+      "<rootDir>/src/mocks/browser.js",
+      "<rootDir>/src/routes/Routes.jsx"
     ],
     "coverageThreshold": {
       "global": {

@@ -12,7 +12,7 @@ const loginAdmin = createAsyncThunk(
     try {
       const get = await axios.post(`${BASE_API}/admin/auth/login`, payload);
 
-      return get.data.access_token;
+      return get.data;
     } catch (error) {
       throw error;
     }
@@ -28,12 +28,14 @@ const authAdminSlice = createSlice({
     },
     logout(state, action) {
       localStorage.removeItem("token_Admin");
+      localStorage.removeItem("role");
       state.isAdminAuthenticated = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(loginAdmin.fulfilled, (state, action) => {
-      localStorage.setItem("token_Admin", action.payload);
+      localStorage.setItem("token_Admin", action.payload.access_token);
+      localStorage.setItem("role", action.payload.role);
       authAdminSlice.caseReducers.login(state, {
         payload: !!action.payload,
         type: loginAdmin.typePrefix,
