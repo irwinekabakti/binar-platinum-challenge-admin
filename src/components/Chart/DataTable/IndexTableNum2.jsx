@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import sort from "../../../assets/fi_sort.svg";
 import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
@@ -98,143 +98,147 @@ const TableListOrder = () => {
   };
 
   return (
-    <div className={classes.containerTable}>
-      <div className="container">
-        <div className="d-block">
-          <div className={classes.wrapperDataChart}>
-            <h4
-              className="fw-bold pt-5 mt-5"
-              data-testid="title-TableDashboard">
-              Dashboard
-            </h4>
-            <div className="d-flex">
-              <div className={`me-3 ${classes.barBlue}`}></div>
-              <h6 className="fw-bold mb-3">List Order</h6>
-            </div>
-          </div>
-          <div className="container mt-5 justify-content-end">
-            <table className={`table ${classes.tableDashboard}`}>
-              <thead className={`table-head ${classes.tableDashboardHead}`}>
-                <tr>
-                  <th className={`th-no ${classes.thNumberDashboard}`}>No</th>
-                  <th
-                    className={`th-email ${classes.thEmailDashboard}`}
-                    onClick={sortEmailClick}>
-                    User Email<img src={sort} alt="sort"></img>
-                  </th>
-                  <th
-                    className={`th-other ${classes.thOtherDashboard}`}
-                    onClick={sortCarClick}>
-                    Car ID<img src={sort} alt="sort"></img>
-                  </th>
-                  <th
-                    className={`th-other ${classes.thOtherDashboard}`}
-                    onClick={sortStartRentClick}>
-                    Start Rent<img src={sort} alt="sort"></img>
-                  </th>
-                  <th
-                    className={`th-other ${classes.thOtherDashboard}`}
-                    onClick={sortFinishRentClick}>
-                    Finish Rent<img src={sort} alt="sort"></img>
-                  </th>
-                  <th
-                    className={`th-other ${classes.thOtherDashboard}`}
-                    onClick={sortPriceClick}>
-                    Price<img src={sort} alt="sort"></img>
-                  </th>
-                  <th
-                    className={`th-other ${classes.thOtherDashboard}`}
-                    onClick={sortCategoryClick}>
-                    User ID<img src={sort} alt="sort"></img>
-                  </th>
-                </tr>
-              </thead>
-              <tbody className={`table-body ${classes.tableBodyDashboard}`}>
-                {selectTable.length
-                  ? selectTable?.map((items, key) => {
-                    return (
-                      <tr key={key}>
-                        <td className="text-center">{items.id}</td>
-                        <td>{items.User.email}</td>
-                        <td>{items.CarId}</td>
-                        <td>
-                          {moment(items.start_rent_at).format("DD MMMM yyyy")}
-                        </td>
-                        <td>
-                          {moment(items.finish_rent_at).format(
-                            "DD MMMM yyyy"
-                          )}
-                        </td>
-                        <td>
-                            Rp {items.total_price.toLocaleString("id-ID")}
-                        </td>
-                        <td>{items.UserId}</td>
-                      </tr>
-                    );
-                  })
-                  : null}
-              </tbody>
-            </table>
-            <div className="d-flex justify-content-between align-items-end mx-4">
-              <div className={`d-flex gap-5 ${classes.buttonRight}`}>
-                <div>
-                  <p
-                    className={`table-dropdown-title ${classes.tableDropdownTitle}`}>
-                    Limit
-                  </p>
-                  <select
-                    defaultValue="choose"
-                    onChange={changeLimit}
-                    className={`table-dropdown ${classes.tableDropdown}`}>
-                    <option value="10">10</option>
-                    <option value="15">15</option>
-                    <option value="20">20</option>
-                    <option value="25">25</option>
-                    <option value="30">30</option>
-                    <option value="35">35</option>
-                  </select>
-                </div>
-                <div>
-                  <p
-                    className={`table-dropdown-title ${classes.tableDropdownTitle}`}>
-                    Jump to Page
-                  </p>
-                  <select
-                    defaultValue="1"
-                    onChange={changePage}
-                    className={`table-dropdown ${classes.tableDropdown}`}>
-                    {jumpToPage.map((items, key) => {
-                      return (
-                        <option key={key} value={items}>
-                          {items}
-                        </option>
-                      );
-                    })}
-                  </select>
-                </div>
+    <Fragment>
+      <div className={classes.containerTable}>
+        <div className="container">
+          <div className="d-block">
+            <div className={classes.wrapperDataChart}>
+              <h4
+                className="fw-bold pt-5 mt-5"
+                data-testid="title-TableDashboard">
+                Dashboard
+              </h4>
+              <div className="d-flex">
+                <div className={`me-3 ${classes.barBlue}`}></div>
+                <h6 className="fw-bold mb-3">List Order</h6>
               </div>
-              <div className="d-flex gap-1">
-                {jumpToPage.map((items, key) => {
-                  return (
-                    <div
-                      key={key}
-                      className={
-                        page === items
-                          ? `${classes.tablePageActive}`
-                          : `${classes.tablePage}`
-                      }
-                      onClick={() => setPage(items)}>
-                      <p className="m-0">{items}</p>
-                    </div>
-                  );
-                })}
+            </div>
+            <div className="container mt-5 justify-content-end">
+              <table className={`table ${classes.tableDashboard}`}>
+                <thead className={`table-head ${classes.tableDashboardHead}`}>
+                  <tr>
+                    <th className={`th-no ${classes.thNumberDashboard}`}>No</th>
+                    <th
+                      className={`th-email ${classes.thEmailDashboard}`}
+                      onClick={sortEmailClick}>
+                      User Email<img src={sort} alt="sort"></img>
+                    </th>
+                    <th
+                      className={`th-other ${classes.thOtherDashboard}`}
+                      onClick={sortCarClick}>
+                      Car ID<img src={sort} alt="sort"></img>
+                    </th>
+                    <th
+                      className={`th-other ${classes.thOtherDashboard}`}
+                      onClick={sortStartRentClick}>
+                      Start Rent<img src={sort} alt="sort"></img>
+                    </th>
+                    <th
+                      className={`th-other ${classes.thOtherDashboard}`}
+                      onClick={sortFinishRentClick}>
+                      Finish Rent<img src={sort} alt="sort"></img>
+                    </th>
+                    <th
+                      className={`th-other ${classes.thOtherDashboard}`}
+                      onClick={sortPriceClick}>
+                      Price<img src={sort} alt="sort"></img>
+                    </th>
+                    <th
+                      className={`th-other ${classes.thOtherDashboard}`}
+                      onClick={sortCategoryClick}>
+                      User ID<img src={sort} alt="sort"></img>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className={`table-body ${classes.tableBodyDashboard}`}>
+                  {selectTable.length
+                    ? selectTable?.map((items, key) => {
+                      return (
+                        <tr key={key}>
+                          <td className="text-center">{items.id}</td>
+                          <td>{items.User.email}</td>
+                          <td>{items.CarId}</td>
+                          <td>
+                            {moment(items.start_rent_at).format(
+                              "DD MMMM yyyy"
+                            )}
+                          </td>
+                          <td>
+                            {moment(items.finish_rent_at).format(
+                              "DD MMMM yyyy"
+                            )}
+                          </td>
+                          <td>
+                            Rp {items.total_price.toLocaleString("id-ID")}
+                          </td>
+                          <td>{items.UserId}</td>
+                        </tr>
+                      );
+                    })
+                    : null}
+                </tbody>
+              </table>
+              <div className="d-flex justify-content-between align-items-end mx-4">
+                <div className={`d-flex gap-5 ${classes.buttonRight}`}>
+                  <div>
+                    <p
+                      className={`table-dropdown-title ${classes.tableDropdownTitle}`}>
+                      Limit
+                    </p>
+                    <select
+                      defaultValue="choose"
+                      onChange={changeLimit}
+                      className={`table-dropdown ${classes.tableDropdown}`}>
+                      <option value="10">10</option>
+                      <option value="15">15</option>
+                      <option value="20">20</option>
+                      <option value="25">25</option>
+                      <option value="30">30</option>
+                      <option value="35">35</option>
+                    </select>
+                  </div>
+                  <div>
+                    <p
+                      className={`table-dropdown-title ${classes.tableDropdownTitle}`}>
+                      Jump to Page
+                    </p>
+                    <select
+                      defaultValue="1"
+                      onChange={changePage}
+                      className={`table-dropdown ${classes.tableDropdown}`}>
+                      {jumpToPage.map((items, key) => {
+                        return (
+                          <option key={key} value={items}>
+                            {items}
+                          </option>
+                        );
+                      })}
+                    </select>
+                  </div>
+                </div>
+                <div className="d-flex gap-1">
+                  {jumpToPage.map((items, key) => {
+                    return (
+                      <div
+                        key={key}
+                        className={
+                          page === items
+                            ? `${classes.tablePageActive}`
+                            : `${classes.tablePage}`
+                        }
+                        onClick={() => setPage(items)}>
+                        <p className="m-0">{items}</p>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </Fragment>
   );
-}
+};
 
 export default TableListOrder;

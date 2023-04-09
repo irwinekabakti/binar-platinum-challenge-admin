@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { Col, Row, Form, Button } from "react-bootstrap";
 import {
   Chart as ChartJS,
@@ -109,7 +109,7 @@ const GraphicCar = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <Col className="grafic-title d-flex align-items-center">
         <Row data-testid="container-Title">
           <p className="mt-2" data-testid="title-Dashboard">
@@ -152,7 +152,7 @@ const GraphicCar = () => {
       <div>
         <Bar data={data} width={200} height={400} options={options} />
       </div>
-    </>
+    </Fragment>
   );
 };
 

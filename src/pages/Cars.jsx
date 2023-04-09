@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import NavbarAdmin from "../components/Navbar/Navbar";
 import { Button, Card, Col, Container, Modal, Row } from "react-bootstrap";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -184,131 +184,139 @@ const Cars = () => {
     }
 
     return (
-      <Row className="g-4 mb-5 mt-0">
-        {renderCars.map((car) => (
-          <Col
-            xs={12}
-            md={6}
-            lg={4}
-            xxl={4}
-            className="containerCardCars"
-            key={car.id}>
-            <Card className="cardCars mt-0">
-              <div className={classes.wrapperImageCars}>
-                <Card.Img src={car.image ? car.image : "Photo doesn't exist"} />
-              </div>
-              <Card.Body>
-                <Card.Text className="fw-bold">{car.name}</Card.Text>
-                <Card.Text className="fw-bold">
-                  Rp {car.price.toLocaleString("id-ID")} / Hari
-                </Card.Text>
-                {car.category.toLowerCase() === "small" ? (
-                  <p>
-                    <small>
-                      <FontAwesomeIcon icon={faUser} /> 2 - 4 People
-                    </small>
-                  </p>
-                ) : null}
-                {car.category.toLowerCase() === "medium" ? (
-                  <p>
-                    <small>
-                      <FontAwesomeIcon icon={faUser} /> 4 - 6 People
-                    </small>
-                  </p>
-                ) : null}
-                {car.category.toLowerCase() === "large" ? (
-                  <p>
-                    <small>
-                      <FontAwesomeIcon icon={faUser} /> 6 - 8 People
-                    </small>
-                  </p>
-                ) : null}
+      <Fragment>
+        <Row className="g-4 mb-5 mt-0">
+          {renderCars.length
+            ? renderCars.map((car) => (
+              <Col
+                xs={12}
+                md={6}
+                lg={4}
+                xxl={4}
+                className="containerCardCars"
+                key={car.id}>
+                <Card className="cardCars mt-0">
+                  <div className={classes.wrapperImageCars}>
+                    <Card.Img
+                      src={car.image ? car.image : "Photo doesn't exist"} />
+                  </div>
+                  <Card.Body>
+                    <Card.Text className="fw-bold">{car.name}</Card.Text>
+                    <Card.Text className="fw-bold">
+                        Rp {car.price.toLocaleString("id-ID")} / Hari
+                    </Card.Text>
+                    {car.category.toLowerCase() === "small" ? (
+                      <p>
+                        <small>
+                          <FontAwesomeIcon icon={faUser} /> 2 - 4 People
+                        </small>
+                      </p>                      ) : null}
+                    {car.category.toLowerCase() === "medium" ? (
+                      <p>
+                        <small>
+                          <FontAwesomeIcon icon={faUser} /> 4 - 6 People
+                        </small>
+                      </p>
+                    ) : null}
+                    {car.category.toLowerCase() === "large" ? (
+                      <p>
+                        <small>
+                          <FontAwesomeIcon icon={faUser} /> 6 - 8 People
+                        </small>
+                      </p>) : null}
 
-                <p>
-                  <small>
-                    <FontAwesomeIcon icon={faClock} /> Updated at{" "}
-                    {moment(car.updatedAt).format("DD MMMM YYYY h:mm A")}
-                  </small>
-                </p>
-                <div className="d-flex justify-content-around">
-                  <Button
-                    variant="outline-danger"
-                    size="lg"
-                    className={`d-flex align-items-center ${classes.btnDelete}`}
-                    style={{ width: "fit-content" }}
-                    onClick={() => {
-                      setId(car.id);
-                    }}>
-                    <FontAwesomeIcon icon={faTrash} className="me-2 " />
-                    Delete
-                  </Button>
-                  <Button
-                    variant="outline-none"
-                    size="lg"
-                    className={`d-flex align-items-center text-white ${classes.btnEdit}`}
-                    style={{ width: "fit-content" }}
-                    onClick={() => navigate(`/cars/edit/${car.id}`)}>
-                    <FontAwesomeIcon icon={faEdit} className="me-2" />
-                    Edit
-                  </Button>
-                </div>
-              </Card.Body>
-            </Card>
-          </Col>
-        ))}
-      </Row>
+                    <p>
+                      <small>
+                        <FontAwesomeIcon icon={faClock} /> Updated at{" "}
+                        {moment(car.updatedAt).format("DD MMMM YYYY h:mm A")}
+                      </small>
+                    </p>
+                    <div className="d-flex justify-content-around">
+                      <Button
+                        variant="outline-danger"
+                        size="lg"
+                        className={`d-flex align-items-center ${classes.btnDelete}`}
+                        style={{ width: "fit-content" }}
+                        onClick={() => {
+                          setId(car.id);
+                        }}>
+                        <FontAwesomeIcon icon={faTrash} className="me-2 " />
+                          Delete
+                      </Button>
+                      <Button
+                        variant="outline-none"
+                        size="lg"
+                        className={`d-flex align-items-center text-white ${classes.btnEdit}`}
+                        style={{ width: "fit-content" }}
+                        onClick={() => navigate(`/cars/edit/${car.id}`)}>
+                        <FontAwesomeIcon icon={faEdit} className="me-2" />
+                          Edit
+                      </Button>
+                    </div>
+                  </Card.Body>
+                </Card>
+              </Col>
+            ))
+            : null}
+        </Row>
+      </Fragment>
     );
   };
 
   return (
-    <Container fluid className={`p-0 m-0 ${classes.containerCarsPage}`}>
-      <NavbarAdmin currentPage="cars" />
-      <Row className="m-0">
-        <Col
-          xs="auto"
-          className={`d-none d-md-block h-100 ${classes.colCarsPage}`}></Col>
-        <Col data-testid="container-Title">
-          <p className="mt-4" data-testid="title-Cars">
-            <strong>Cars {">"}</strong> List Car
-          </p>
-          <h5 className="mt-4" data-testid="title-Cars-2">
-            <strong>List Car</strong>
-          </h5>
-          <div className="d-flex justify-content-end">
+    <Fragment>
+      <Container fluid className={`p-0 m-0 ${classes.containerCarsPage}`}>
+        <NavbarAdmin currentPage="cars" />
+        <Row className="m-0">
+          <Col
+            xs="auto"
+            className={`d-none d-md-block h-100 ${classes.colCarsPage}`}></Col>
+          <Col data-testid="container-Title">
+            <p className="mt-4" data-testid="title-Cars">
+              <strong>Cars {">"}</strong> List Car
+            </p>
+            <h5 className="mt-4" data-testid="title-Cars-2">
+              <strong>List Car</strong>
+            </h5>
+            <div className="d-flex justify-content-end">
+              <Button
+                className={`pe-3 mb-2 fw-bold ${classes.btnAddCar}`}
+                onClick={toAddNewCar}>
+                <FontAwesomeIcon icon={faPlus} className="me-2 " />
+                Add New Car
+              </Button>
+            </div>
             <Button
-              className={`pe-3 mb-2 fw-bold ${classes.btnAddCar}`}
-              onClick={toAddNewCar}>
-              <FontAwesomeIcon icon={faPlus} className="me-2 " />
-              Add New Car
+              className={`me-3 mb-2 ${classes.btnFilterCars}`}
+              onClick={handlingFilterAllCar}>
+              All
             </Button>
-          </div>
-          <Button
-            className={`me-3 mb-2 ${classes.btnFilterCars}`}
-            onClick={handlingFilterAllCar}>
-            All
-          </Button>
-          <Button
-            className={`me-3 mb-2 ${classes.btnFilterCars}`}
-            onClick={handlingFilterSmallCar}>
-            2 - 4 people
-          </Button>
-          <Button
-            className={`me-3 mb-2 ${classes.btnFilterCars}`}
-            onClick={handlingFilterMediumCar}>
-            4 - 6 people
-          </Button>
-          <Button
-            className={`me-3 mb-2 ${classes.btnFilterCars}`}
-            onClick={handlingFilterLargeCar}>
-            6 - 8 people
-          </Button>
-          {filterCars()}
-        </Col>
-      </Row>
-      <FormSuccessModal show={showFormModal} onHide={handleShowFormModal} />
-      <OpenHeaderModal show={showHeaderModal} onHide={handleShowHeaderModal} />
-      <OpenModal show={showModal} onHide={handleShowModal} />
-    </Container>
+            <Button
+              className={`me-3 mb-2 ${classes.btnFilterCars}`}
+              onClick={handlingFilterSmallCar}>
+              2 - 4 people
+            </Button>
+            <Button
+              className={`me-3 mb-2 ${classes.btnFilterCars}`}
+              onClick={handlingFilterMediumCar}>
+              4 - 6 people
+            </Button>
+            <Button
+              className={`me-3 mb-2 ${classes.btnFilterCars}`}
+              onClick={handlingFilterLargeCar}>
+              6 - 8 people
+            </Button>
+            {filterCars()}
+          </Col>
+        </Row>
+        <FormSuccessModal show={showFormModal} onHide={handleShowFormModal} />
+        <OpenHeaderModal
+          show={showHeaderModal}
+          onHide={handleShowHeaderModal}
+        />
+        <OpenModal show={showModal} onHide={handleShowModal} />
+      </Container>
+    </Fragment>
   );
 };
 
