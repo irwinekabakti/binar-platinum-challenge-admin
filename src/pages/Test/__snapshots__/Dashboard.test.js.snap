@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`UI Dashboard Test UI Dashboard should match snapshot 1`] = `
-<div>
+Array [
   <div
     className="p-0 m-0 containerDashboard container-fluid"
     data-testid="container-Dashboard"
@@ -356,7 +356,7 @@ exports[`UI Dashboard Test UI Dashboard should match snapshot 1`] = `
       <div />
       <br />
     </div>
-  </div>
+  </div>,
   <div
     className="containerTable"
   >
@@ -690,6 +690,6 @@ exports[`UI Dashboard Test UI Dashboard should match snapshot 1`] = `
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </div>,
+]
 `;

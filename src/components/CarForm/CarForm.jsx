@@ -1,30 +1,39 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { Button, Col, Form, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 import iconUpload from "../../assets/fi_upload.svg";
 import classes from "./CarForm.module.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
 import {
   uploadedCarDashboard,
   editedCarDashboard,
+  detailCarDashboard,
 } from "../../store/action/dashboard-slice";
 
 const CarForm = ({ formFunction }) => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const loc = useLocation();
   const [name, setName] = useState("");
   const [price, setPrice] = useState(null);
   const [image, setImage] = useState(null);
   const [category, setCategory] = useState("");
   const dispatch = useDispatch();
+  const selector = useSelector((state) => state.dashboardStore);
+  const selectEdit = selector.detailCar;
 
   const addNewCarForm = async () => {
     dispatch(uploadedCarDashboard({ name, price, category, image }))
       .unwrap()
       .then(() => {
         navigate("/cars?formSuccess=true");
+      })
+      .catch((error) => {
+        setTimeout(() => {
+          alert(error);
+        }, 1500);
       });
   };
 
@@ -33,8 +42,24 @@ const CarForm = ({ formFunction }) => {
       .unwrap()
       .then(() => {
         navigate("/cars?formSuccess=true");
+      })
+      .catch((error) => {
+        setTimeout(() => {
+          alert(error);
+        }, 1500);
       });
   };
+
+  const getDetailCar = async () => {
+    dispatch(detailCarDashboard(id));
+  };
+
+  useEffect(() => {
+    if (loc.pathname.includes("edit")) {
+      getDetailCar();
+    }
+  }, [loc.pathname]);
+
 
   const formData = (e) => {
     e.preventDefault();
@@ -89,7 +114,11 @@ const CarForm = ({ formFunction }) => {
             <Col sm="8">
               <Form.Control
                 type="text"
-                placeholder="Input Nama/Tipe Mobil"
+                placeholder={
+                  formFunction === "edit"
+                    ? `${selectEdit?.name}`
+                    : "Input Nama/Tipe Mobil"
+                }
                 required={formFunction === "edit" ? false : true}
                 className={classes.formBox}
                 onChange={handleName}
@@ -114,7 +143,11 @@ const CarForm = ({ formFunction }) => {
             <Col sm="8">
               <Form.Control
                 type="number"
-                placeholder="Input Harga Sewa Mobil"
+                placeholder={
+                  formFunction === "edit"
+                    ? `Rp ${selectEdit?.price?.toLocaleString("id-ID")}`
+                    : "Input Harga Sewa Mobil"
+                }
                 required={formFunction === "edit" ? false : true}
                 className={classes.formBox}
                 onChange={handlePrice}
@@ -180,7 +213,10 @@ const CarForm = ({ formFunction }) => {
             <Col sm="8">
               <Form.Select
                 className={classes.formBox}
-                onChange={handleCategory}>
+                onChange={handleCategory}
+                defaultValue={
+                  formFunction === "edit" ? selectEdit.category : null
+                }>
                 <option hidden>Pilih Kategori Mobil</option>
                 <option value="small">2 - 4 orang</option>
                 <option value="medium">4 - 6 orang</option>
@@ -193,13 +229,25 @@ const CarForm = ({ formFunction }) => {
               <Col sm="4" className="mb-0">
                 Created at
               </Col>
-              <Col sm="8">-</Col>
+              <Col sm="8">
+                {formFunction === "edit"
+                  ? `${moment(selectEdit?.createdAt).format(
+                    "DD MMMM YYYY h:mm A"
+                  )}`
+                  : "-"}
+              </Col>
             </Row>
             <Row>
               <Col sm="4" className="mb-0">
                 Updated at
               </Col>
-              <Col sm="8">-</Col>
+              <Col sm="8">
+                {formFunction === "edit"
+                  ? `${moment(selectEdit?.createdAt).format(
+                    "DD MMMM YYYY h:mm A"
+                  )}`
+                  : "-"}
+              </Col>
             </Row>
           </div>
         </fieldset>

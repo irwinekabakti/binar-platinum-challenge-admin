@@ -81,7 +81,8 @@
       "<rootDir>/src/reportWebVitals.js",
       "<rootDir>/src/App.js",
       "<rootDir>/src/mocks/browser.js",
-      "<rootDir>/src/routes/Routes.jsx"
+      "<rootDir>/src/routes/Routes.jsx",
+      "<rootDir>/src/components/Loading/Loading.jsx"
     ],
     "coverageThreshold": {
       "global": {

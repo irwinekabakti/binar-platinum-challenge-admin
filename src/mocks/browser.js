@@ -108,6 +108,26 @@ const handlers = [
     );
   }),
 
+  rest.get(`${BASE_API}/admin/car/:id`, (req, res, ctx) => {
+    const { id } = req.params;
+    return res(
+      ctx.status(200),
+      ctx.json({
+        id,
+        name: "Honda",
+        category: "small",
+        price: 4000000,
+        status: false,
+        start_rent_at: null,
+        finish_rent_at: null,
+        image:
+          "https://firebasestorage.googleapis.com/v0/b/km-sib-2---secondhand.appspot.com/o/cars%2F1680409997233-2019-Mercedes-Benz-C-Class-Sedan-Hero-Image.png?alt=media",
+        createdAt: "2023-04-02T04:33:17.237Z",
+        updatedAt: "2023-04-02T04:33:17.237Z",
+      })
+    );
+  }),
+
   rest.put(`${BASE_API}/admin/car/:id`, (req, res, ctx) => {
     const { id } = req.params;
     return res(

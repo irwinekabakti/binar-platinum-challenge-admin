@@ -369,6 +369,7 @@ exports[`UI CarFormPage Test UI UI CarFormPage should match snapshot 1`] = `
               >
                 <select
                   className="formBox form-select"
+                  defaultValue={null}
                   id="category"
                   onChange={[Function]}
                 >

@@ -6,6 +6,7 @@ const initialState = {
   chartOrder: [],
   dashboardData: [],
   dataCars: [],
+  detailCar: [],
 };
 
 const chartDashboard = createAsyncThunk("chart/order", async (payload) => {
@@ -109,7 +110,7 @@ const detailCarDashboard = createAsyncThunk("detail/car", async (payload) => {
     };
 
     const detailCar = await axios.get(
-      `${BASE_API}/admin/order/${payload}`,
+      `${BASE_API}/admin/car/${payload}`,
       config
     );
 
@@ -180,7 +181,7 @@ const dashboardSlice = createSlice({
       state.dataCars = action.payload;
     },
     getDetailCarDashboard(state, action) {
-      state.dataCars = action.payload;
+      state.detailCar = action.payload;
     },
     editCarsDashboard(state, action) {
       state.dataCars = action.payload;
@@ -205,7 +206,9 @@ const dashboardSlice = createSlice({
       });
     });
     builder.addCase(uploadedCarDashboard.fulfilled, (state, action) => {});
-    builder.addCase(detailCarDashboard.fulfilled, (state, action) => {});
+    builder.addCase(detailCarDashboard.fulfilled, (state, action) => {
+      state.detailCar = action.payload;
+    });
     builder.addCase(editedCarDashboard.fulfilled, (state, action) => {});
     builder.addCase(deletedCarDashboard.fulfilled, (state, action) => {});
   },
