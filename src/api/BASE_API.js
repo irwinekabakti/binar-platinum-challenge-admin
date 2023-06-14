@@ -1,3 +1,3 @@
-const BASE_API = `https://bootcamp-rent-cars.herokuapp.com`;
+const BASE_API = `https://api-car-rental.binaracademy.org`;
 
 export default BASE_API;
